@@ -1,0 +1,53 @@
+@import '../../../styles/variables.scss';
+
+.sideBar{
+    position: absolute;
+    top: 0;
+    left: -200px;
+    width: 200px;
+    height: 100vh;
+    background-color: $bg_color;
+    opacity: 0.9;
+    z-index: 2;
+}
+
+.overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+}
+
+.open{
+    animation-duration: 0.5s;
+    animation-name: slideIn;
+    left: 0px;
+}
+
+.close{
+    animation-duration: 0.5s;
+    animation-name: slideOut;
+    left: -200px;
+}
+
+@keyframes slideIn {
+    from {
+      left: -200px;
+    }
+  
+    to {
+      left: 0;
+    }
+}
+
+@keyframes slideOut {
+    from {
+      left: 0;
+    }
+  
+    to {
+      left: -200px;
+    }
+}

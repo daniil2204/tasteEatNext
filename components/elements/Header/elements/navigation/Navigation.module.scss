@@ -1,0 +1,55 @@
+.nav{
+    margin-top: 26px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navList{
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+    &__text{
+        color: white;
+        font-family: Josefin Sans;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 30px; 
+        letter-spacing: 0.2px;
+    }
+}
+
+.logos{
+    img{
+        margin-left: 20px;
+        cursor: pointer;
+    }
+}
+
+.white{
+    filter: invert(100%) sepia(0%) saturate(1498%) hue-rotate(319deg) brightness(122%) contrast(100%);
+}
+
+@media(max-width:1045px){
+    .navList{
+        gap: 40px;
+    }
+}
+
+@media(max-width:900px){
+    .navList{
+        gap: 20px;
+        &__text{
+            font-size: 16px;
+        }
+    }
+}
+
+@media(max-width:900px){
+    .navList{
+        gap: 10px;
+        &__text{
+            font-size: 14px;
+        }
+    }
+}
