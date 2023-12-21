@@ -1,6 +1,5 @@
-'use client'
 export const getWindowWidth = () => {
-  const { innerWidth: windowWidth } =
+  const { innerWidth } =
     typeof window !== 'undefined' ? window : { innerWidth: 0 }
-  return { windowWidth }
+  return { innerWidth }
 }

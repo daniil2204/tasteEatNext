@@ -5,18 +5,14 @@ import Image from 'next/image'
 import { useWindowWidth } from '@/hooks/useMediaQuery'
 import { sizeInterface } from '@/types/header'
 import Navigation from './elements/navigation/Navigation'
+import { sizeLogoByWidth } from '@/utils/sizeLogoByWidth'
 
 const Header = () => {
   const { windowWidth } = useWindowWidth()
   const [size, setSize] = useState<sizeInterface>({ width: 378, height: 188 })
   useEffect(() => {
-    windowWidth.windowWidth > 1200
-      ? setSize({ width: 378, height: 188 })
-      : windowWidth.windowWidth > 900
-        ? setSize({ width: 280, height: 118 })
-        : windowWidth.windowWidth > 520
-          ? setSize({ width: 240, height: 98 })
-          : setSize({ width: 160, height: 68 })
+    const logoSize = sizeLogoByWidth(windowWidth.innerWidth - 70)
+    setSize(logoSize)
   }, [windowWidth])
   return (
     <header className={styles.header}>

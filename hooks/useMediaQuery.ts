@@ -1,4 +1,3 @@
-'use client'
 import { useEffect, useState } from 'react'
 import { getWindowWidth } from '@/utils/getWindowWidth'
 
@@ -14,16 +13,16 @@ export const useWindowWidth = () => {
 
 export const useMediaQuery = (maxWidth: number) => {
   const {
-    windowWidth: { windowWidth },
+    windowWidth: { innerWidth },
     handleResize,
   } = useWindowWidth()
   const [isMedia, setIsMedia] = useState(false)
   useEffect(() => {
-    if (windowWidth <= maxWidth) {
+    if (innerWidth <= maxWidth) {
       setIsMedia(true)
     } else {
       setIsMedia(false)
     }
-  }, [handleResize, maxWidth, windowWidth])
+  }, [handleResize, maxWidth, innerWidth])
   return isMedia
 }

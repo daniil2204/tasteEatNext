@@ -1,0 +1,166 @@
+@import '../../../styles/variables.scss';
+
+.footer{
+    background-color: $bg_color;
+    padding: 50px;
+}
+
+.widthContainer{
+    width: 295px;
+}
+
+.text{
+    color: #FFF;
+    font-family: Josefin Sans;
+    font-style: normal;
+    font-weight: 400;
+
+    letter-spacing: 0.2px;
+    &__hashtag{
+        font-size: 22px;
+    }
+    &__logo{
+        margin-top: 5px;
+        font-size: 20px;
+        text-align: center;
+        line-height: 26px; 
+    }
+}
+
+.logos{
+    display: flex;
+    justify-content: flex-end;
+    img{
+        margin-left: 20px;
+        cursor: pointer;
+    }
+}
+
+.addInfo{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 25px;
+    &__text{
+        color: #FFF;
+        font-family: Josefin Sans;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 30px; /* 150% */
+        letter-spacing: 0.2px;
+        font-size: 20px;
+        &__header{
+            font-size: 15px;
+            text-transform: uppercase;
+            text-decoration: underline overline #E1B168;
+            line-height: 26px; 
+            letter-spacing: 3px;
+            margin-bottom: 32px;
+        }
+    }
+}
+
+.emailInput{
+    width: 456px;
+    height: 68px;
+    border: 1px solid #858585;
+    padding-left: 24px;
+    background-color: $bg_color;
+    color: #FFF;
+    font-family: Josefin Sans;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 33px;
+    letter-spacing: 0.2px;
+}
+
+.emailInput::placeholder{
+    color: #FFF;
+    
+}
+
+.emailBtn{
+    width: 208px;
+    height: 68px;
+    background: #FFF;
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+
+@media(max-width: 1260px) {
+    .emailInput{
+        width: 300px;
+        height: 48px;
+    }
+    .emailBtn{
+        width: 168px;
+        height: 48px;
+    }
+}
+
+@media(max-width:1200px){
+    .footer{
+        padding: 25px;
+    }
+}
+
+@media (max-width:1100px) {
+    .emailInput{
+        width: 200px;
+        height: 48px;
+    }
+    .emailBtn{
+        width: 68px;
+        height: 48px;
+        p {
+            font-size: 12px;
+        }
+    }
+}
+
+@media(max-width:840px){
+    .addInfo{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .emailInput {
+        margin: 25px 0;
+    }
+}
+
+@media(max-width:625px){
+    .text{
+        &__hashtag{
+            font-size: 16px;
+        }
+        &__logo{
+            font-size: 10px;
+        }
+    }
+    .logos{
+        img{
+            margin-left: 10px;
+            width: 16px;
+            height: 16px;
+        }
+    }
+}
+
+@media(max-width:440px){
+    .footer{
+        padding: 25px 10px;
+    }
+    .text{
+        &__hashtag{
+            font-size: 16px;
+        }
+        &__logo{
+            font-size: 8px;
+        }
+    }
+}
