@@ -12,6 +12,11 @@
     align-items: center;
 }
 
+.logo{
+    width: 378px;
+    height: 188px;
+}
+
 .btn{
     text-align: center;   
     font-size: 22px;
@@ -71,6 +76,10 @@
         height: 43px;
         font-size: 16px;
     }
+    .logo{
+        width: 280px; 
+        height: 118;
+    }
 }
 
 @media(max-width:720px){
@@ -78,6 +87,10 @@
         width: 125px;
         height: 43px;
         font-size: 12px;
+    }
+    .logo{
+        width: 240px;
+        height: 98px;
     }
     
 }
@@ -96,5 +109,10 @@
                 display: inline-block;
         }
     }
+    .logo{
+        width: 160px;
+        height: 68px;
+    }
+    
 }
     
