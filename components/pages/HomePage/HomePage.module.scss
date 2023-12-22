@@ -1,0 +1,140 @@
+@import '../../../styles/variables.scss';
+
+.homePage{
+    background-color: $bg_color;
+    padding: 0 50px;
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.textContainer{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.text{
+    color: #FFF;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+}
+
+.mainText{
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: Cormorant Infant;
+    font-size: 100px;
+    line-height: 110px;
+}
+
+.subText{
+    margin-top: 26px;
+    font-family: Josefin Sans;
+    font-size: 20px;
+    line-height: 30px;  
+}
+
+.link{
+    width: 230px;   
+    height: 73px;
+    border: 2px solid #E1B168;
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    p {
+        color: #E1B168;  
+        font-family: Josefin Sans;
+        font-size: 22px;
+        line-height: 33px;
+    }
+}
+
+.imgContainer{
+    width: 50%;
+    position: relative;
+}
+
+@media(max-width:1100px){
+    .mainText{
+        font-size: 75px;
+        line-height: 90px;
+    }
+    .subText{
+        font-size: 16px; 
+    }
+    .imgContainer{
+        height: 500px;
+    }
+}
+
+@media(max-width:900px){
+    .textContainer{
+        display: block;
+    }
+    .mainText{
+        font-size: 50px;
+        line-height: 70px;
+    }
+    .subText{
+        font-size: 12px; 
+    }
+    .imgContainer{
+        height: 400px;
+    }
+    .link{
+        width: 180px;
+        height: 50px;
+        p {
+            font-size: 18px;
+        }
+    }
+}
+
+@media(max-width:765px){
+    .mainText{
+        font-size: 40px;
+        line-height: 60px;
+    }
+    .imgContainer{
+        height: 300px;
+    }
+}
+
+@media(max-width:540px){
+    .homePage{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .textContainer, .imgContainer{
+        text-align: center;
+        width: 80%;
+        a {
+            margin: 0 auto;
+        }
+    }
+    
+}
+
+@media(max-width:400px){
+    .textContainer, .imgContainer{
+        width: 100%;
+    }
+    .mainText{
+        font-size: 30px;
+        line-height: 40px;
+        margin-top: 25px;
+    }
+    .link{
+        width: 120px;
+        height: 40px;
+        p {
+            font-size: 12px;
+        }
+    }
+    
+}

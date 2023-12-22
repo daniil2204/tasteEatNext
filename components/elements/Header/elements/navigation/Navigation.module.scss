@@ -16,6 +16,10 @@
         font-weight: 400;
         line-height: 30px; 
         letter-spacing: 0.2px;
+        cursor: pointer;
+    }
+    &__text:hover{
+        color: #E1B168;
     }
 }
 
@@ -23,6 +27,9 @@
     img{
         margin-left: 20px;
         cursor: pointer;
+    }
+    img:hover{
+        filter: brightness(0) saturate(100%) invert(69%) sepia(84%) saturate(263%) hue-rotate(351deg) brightness(93%) contrast(89%);
     }
 }
 

@@ -2,11 +2,12 @@
 import React from 'react'
 import styles from './Header.module.scss'
 import Image from 'next/image'
-
+import { usePathname } from 'next/navigation'
 import Navigation from './elements/navigation/Navigation'
 
 const Header = () => {
-  console.log('hello')
+  const pathName = usePathname()
+  console.log(pathName)
   return (
     <header className={styles.header}>
       <div className={styles.banner}>
@@ -36,7 +37,7 @@ const Header = () => {
           />
         </button>
       </div>
-      <p className={styles.line}>{}</p>
+      <p className={styles.line} />
       <Navigation />
     </header>
   )

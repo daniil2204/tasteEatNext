@@ -1,8 +1,9 @@
 import Head from 'next/head'
+import HomePage from '@/components/pages/HomePage/HomePage'
 
 export default function Home() {
   return (
-    <div>
+    <>
       <Head>
         <link
           rel="icon"
@@ -11,7 +12,7 @@ export default function Home() {
           href="/assets/img/logo.svg"
         />
       </Head>
-      <main>HEEELO</main>
-    </div>
+      <HomePage />
+    </>
   )
 }
