@@ -34,6 +34,7 @@ const Footer = () => {
               src="/assets/img/bannerLogo.svg"
               width={size.width}
               height={size.height}
+              priority
             />
             <p className={`${styles.text} ${styles.text__logo}`}>
               Join our mailing list for updates,
@@ -80,7 +81,7 @@ const Footer = () => {
             </p>
           </button>
         </div>
-        <div>
+        <div style={{ textAlign: 'right' }}>
           <p
             className={`${styles.addInfo__text} ${styles.addInfo__text__header}`}
           >

@@ -15,8 +15,8 @@ const Navigation = () => {
       {!is600 ? (
         <ul className={styles.navList}>
           {navList.map((link) => (
-            <li className={styles.navList__text} key={link}>
-              <Link href={'/'}>{link}</Link>
+            <li className={styles.navList__text} key={link.title}>
+              <Link href={link.href}>{link.title}</Link>
             </li>
           ))}
         </ul>

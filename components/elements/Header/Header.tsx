@@ -30,7 +30,7 @@ const Header = () => {
         <button className={`${styles.btn} ${styles.btn__reservation}`}>
           <p>Reservation</p>
           <Image
-            src={'/assets/img/reservation.svg'}
+            src={'/assets/img/reservationIcon.svg'}
             alt="reservation"
             width={20}
             height={20}
