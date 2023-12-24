@@ -81,7 +81,7 @@ const Footer = () => {
             </p>
           </button>
         </div>
-        <div style={{ textAlign: 'right' }}>
+        <div className={styles.rightAddInfo}>
           <p
             className={`${styles.addInfo__text} ${styles.addInfo__text__header}`}
           >

@@ -3,6 +3,7 @@ import styles from './SideBar.module.scss'
 import { sideBarInterface, navListType } from '@/types/header'
 import { navList } from '@/utils/additionalLists'
 import Link from 'next/link'
+import Image from 'next/image'
 const SideBar = ({ isOpen, setIsOpen }: sideBarInterface) => {
   const [isFirstRender, setIsNotFirstRender] = useState(true)
   const openSideBar = () => {
@@ -13,11 +14,20 @@ const SideBar = ({ isOpen, setIsOpen }: sideBarInterface) => {
   const createNav = (navList: navListType[]) => {
     console.log('')
     return (
-      <div>
+      <div className={styles.container}>
+        <Image
+          src={'/assets/img/bannerLogo.svg'}
+          alt="TasteEat logo"
+          width={160}
+          height={80}
+          priority
+        />
+        <p className={`${styles.title} ${styles.text}`}>TasteEat</p>
+        <p className={styles.underline} />
         {navList.map((nav) => (
-          <Link key={nav.title} href={nav.href}>
-            {nav.title}
-          </Link>
+          <p key={nav.title} className={`${styles.link} ${styles.text}`}>
+            <Link href={nav.href}>{nav.title}</Link>
+          </p>
         ))}
       </div>
     )

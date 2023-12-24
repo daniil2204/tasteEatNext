@@ -94,6 +94,9 @@
     margin-bottom: 5px;
 }
 
+.rightAddInfo{
+    text-align: right;
+}
 
 
 @media(max-width: 1260px) {
@@ -136,6 +139,9 @@
     }
     .emailInput {
         margin: 25px 0;
+    } 
+    .rightAddInfo{
+        text-align: center;
     }
 }
 
