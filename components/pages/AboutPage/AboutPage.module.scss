@@ -42,6 +42,46 @@
     }
 }
 
+.storyContainer{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 50px 50px;
+    gap: 40px;
+}
+
+.storyImgContainer{
+    position: relative;
+    width: 743px;
+    height: 519px;
+}
+
+.storyTextContainer{
+    max-width: 540px;
+}
+
+.storyMottos{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+}
+.author{
+    color: #555;
+    font-family: Josefin Sans;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px;
+    letter-spacing: 0.2px;
+    margin-top: 20px;
+}
+
+.signaruteContainer{
+    position: relative;
+    width: 200px;
+    height: 111px;
+    margin-top: 20px;
+}
+
 @media (max-width:1200px){
     .briefInfo{
         &__imgContainer{
@@ -56,6 +96,21 @@
             font-size: 24px;
             line-height: 33px;
         }
+    }
+    .storyImgContainer{
+        height: 400px;
+        width: 640px;
+    }
+    .storyTextContainer{
+        max-width: 440px;
+    }
+    .author{
+        font-size: 16px;
+    }
+    
+    .signaruteContainer{
+        width: 150px;
+        height: 90px;
     }
 }
 
@@ -74,6 +129,17 @@
             line-height: 30px;
         }
     }
+    .storyImgContainer{
+        height: 300px;
+    }
+    .author{
+        font-size: 14px;
+    }
+    
+    .signaruteContainer{
+        width: 130px;
+        height: 70px;
+    }
 }
 
 @media (max-width:800px){
@@ -81,6 +147,30 @@
         flex-direction: column;
         justify-content: center;
         text-align: center;
+    }
+    .storyImgContainer{
+        width: 400px;
+        height: 200px;
+    }
+    .author{
+        font-size: 12px;
+    }
+    
+    .signaruteContainer{
+        width: 100px;
+        height: 50px;
+    }
+}
+
+@media (max-width:765px){
+    .storyContainer{
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin: 0;
+    }
+    .signaruteContainer{
+        margin: 0 auto;
     }
 }
 
@@ -98,5 +188,8 @@
         &__info{
             width: 230px;
         }
+    }
+    .storyImgContainer{
+        width: 300px;
     }
 }

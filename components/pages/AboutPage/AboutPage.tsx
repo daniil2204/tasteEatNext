@@ -38,6 +38,52 @@ const AboutPage = () => {
       <div className={styles.briefInfoContainer}>
         {createBriefInfo(briefInfoArray)}
       </div>
+      <div className={styles.storyContainer}>
+        <div className={styles.storyImgContainer}>
+          <Image src={'/assets/img/mainHall.svg'} alt="Main hall" fill />
+        </div>
+        <div className={styles.storyTextContainer}>
+          <p className={`${styles.briefInfo__title} ${styles.briefInfo__text}`}>
+            The Delicious Story
+          </p>
+          <p
+            className={`${styles.briefInfo__subTitle} ${styles.briefInfo__text}`}
+          >
+            The people, food and the prime locations make the perfect place for
+            the friends & family to come together and have great time.
+          </p>
+          <div className={styles.storyMottos}>
+            <div>
+              <p
+                className={`${styles.briefInfo__title} ${styles.briefInfo__text}`}
+              >
+                2018
+              </p>
+              <p
+                className={`${styles.briefInfo__subTitle} ${styles.briefInfo__text}`}
+              >
+                Plan for this restaurant to deliver healthy food.
+              </p>
+            </div>
+            <div>
+              <p
+                className={`${styles.briefInfo__title} ${styles.briefInfo__text}`}
+              >
+                2022
+              </p>
+              <p
+                className={`${styles.briefInfo__subTitle} ${styles.briefInfo__text}`}
+              >
+                Happily in the fourth year by fulfill the motto.
+              </p>
+            </div>
+          </div>
+          <p className={styles.author}>JOSEFINE</p>
+          <div className={styles.signaruteContainer}>
+            <Image src={'/assets/img/signature.svg'} alt="Signarute" fill />
+          </div>
+        </div>
+      </div>
     </section>
   )
 }
