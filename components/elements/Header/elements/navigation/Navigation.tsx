@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from 'react'
 import SideBar from '@/components/elements/SideBar/SideBar'
 import styles from './Navigation.module.scss'

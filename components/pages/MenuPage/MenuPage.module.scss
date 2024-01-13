@@ -1,6 +1,6 @@
 .menuPage{
     text-align: center;
-    margin-top: 25px;
+    margin: 25px 0;
 }
 
 .text{
@@ -26,59 +26,4 @@
     line-height: 30px;
 }
 
-.menuGrid{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 1fr;
-    gap: 30px;
-    margin-top: 50px;
-}
 
-.dishContainer{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.dishImg{
-    position: relative;
-    width: 100%;
-    height: 307px;
-}
-
-.titleAndPrice{
-    width: 95%;
-    display: flex;
-    justify-content: space-between;
-    margin-top: 10px;
-}
-
-.dishTitle{
-    color: #292E36;
-    font-family: Cormorant Infant;
-    font-size: 30px;
-    line-height: 42px;
-}
-
-.dishPrice{
-    color: #292E36;
-    font-family: Cormorant Infant;
-    font-size: 30px;
-    line-height: 42px;
-}
-
-.underline{
-    width: 95%;
-    height: 1px;
-    background: #DCDCDC;
-}
-
-.description{
-    width: 95%;
-    text-align: left;
-    color: #555;
-    font-family: Josefin Sans;
-    font-size: 20px;
-    line-height: 30px;
-}

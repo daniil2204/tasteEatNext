@@ -1,0 +1,43 @@
+.menuGrid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+    gap: 30px;
+    margin: 50px 25px 0;
+
+}
+
+.btn{
+    width: 255px;
+    height: 73px;
+    border: 2px solid #E1B168;
+    p {
+        color: #E1B168;
+        text-align: center;
+        font-family: Josefin Sans;
+        font-size: 22px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 33px;
+        letter-spacing: 0.2px; 
+    }
+}
+
+@media(max-width:1200px){
+    .menuGrid{
+        grid-template-columns: repeat(3, 1fr);
+        margin: 50px 0 0;
+    }
+}
+
+@media(max-width:900px){
+    .menuGrid{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width:565px){
+    .menuGrid{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
