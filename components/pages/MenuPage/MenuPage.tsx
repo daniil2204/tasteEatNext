@@ -1,12 +1,17 @@
 import React from 'react'
 import styles from './MenuPage.module.scss'
 import List from './elements/List/List'
+import MenuSlider from './elements/MenuSlider/MenuSlider'
 
-const MenuPage = async () => {
+const MenuPage = () => {
   return (
     <section className={styles.menuPage}>
-      <div>
+      <div className={styles.menu}>
         <p className={`${styles.text} ${styles.title}`}>Menu</p>
+        <MenuSlider />
+      </div>
+      <div className={styles.popular}>
+        <p className={`${styles.text} ${styles.title}`}>Popular Dishes</p>
         <p className={`${styles.text} ${styles.subTitle}`}>
           There is a game between the waiters in restaurant to see who serves
           the food to

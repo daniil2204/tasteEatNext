@@ -3,14 +3,16 @@
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 1fr;
     gap: 30px;
-    margin: 50px 25px 0;
-
+    margin: 30px 25px 0;
+    justify-items: center; 
 }
 
 .btn{
     width: 255px;
     height: 73px;
     border: 2px solid #E1B168;
+    margin-top: 50px;
+    opacity: 0.7;
     p {
         color: #E1B168;
         text-align: center;
@@ -26,18 +28,31 @@
 @media(max-width:1200px){
     .menuGrid{
         grid-template-columns: repeat(3, 1fr);
-        margin: 50px 0 0;
     }
+    
 }
+
 
 @media(max-width:900px){
     .menuGrid{
         grid-template-columns: repeat(2, 1fr);
     }
+    .btn{
+        width: 215px;
+        height: 53px;
+    }
 }
 
 @media(max-width:565px){
     .menuGrid{
+        margin-top: 0;
         grid-template-columns: repeat(1, 1fr);
+    }
+    .btn{
+        width: 185px;
+        height: 43px;
+        p{
+            font-size: 16px;
+        }
     }
 }

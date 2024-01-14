@@ -15,8 +15,8 @@ export const navList: navListType[] = [
     href: '/menu',
   },
   {
-    title: 'Pages',
-    href: '/pages',
+    title: 'Offer',
+    href: '/offer',
   },
   {
     title: 'Blog',
