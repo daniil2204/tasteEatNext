@@ -4,7 +4,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 const HomePage = () => {
-  console.log('hello')
   return (
     <section about="Home page" className={styles.homePage}>
       <div className={styles.textContainer}>

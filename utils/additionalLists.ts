@@ -1,5 +1,6 @@
 import { briefInfoInterface } from '@/types/about'
 import { navListType } from '@/types/header'
+import { typeOfFood } from '@/types/slider'
 
 export const navList: navListType[] = [
   {
@@ -70,4 +71,11 @@ export const briefInfoArray: briefInfoInterface[] = [
     text: 'restaurantate@gmail.com',
     title: 'Reservation',
   },
+]
+
+export const typeOfFoodList: typeOfFood[] = [
+  'Breakfast',
+  'Dinner',
+  'Drink',
+  'Dessert',
 ]

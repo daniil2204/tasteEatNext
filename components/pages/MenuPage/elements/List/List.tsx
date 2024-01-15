@@ -11,6 +11,7 @@ const List = () => {
   const [dishes, setDishes] = useState<DishInterface[]>([])
   const [offset, setOffset] = useState(0)
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(false)
   const [end, setEnd] = useState(false)
 
   const onRequest = async (offset: number) => {
@@ -22,6 +23,10 @@ const List = () => {
       })
       .then(() => setLoading(false))
       .then(() => setOffset(offset + 4))
+      .catch(() => {
+        setError(true)
+        setLoading(false)
+      })
   }
 
   useEffect(() => {
@@ -46,16 +51,20 @@ const List = () => {
   }
   return (
     <>
-      {createDish(dishes)}
-      {loading && <Spinner />}
-      <button
-        className={styles.btn}
-        onClick={() => onRequest(offset)}
-        disabled={end}
-        style={end ? { display: 'none' } : { display: 'inline' }}
-      >
-        <p>Load More</p>
-      </button>
+      {!error && (
+        <>
+          {createDish(dishes)}
+          {loading && <Spinner />}
+          <button
+            className={styles.btn}
+            onClick={() => onRequest(offset)}
+            disabled={end}
+            style={end ? { display: 'none' } : { display: 'inline' }}
+          >
+            <p>Load More</p>
+          </button>
+        </>
+      )}
     </>
   )
 }

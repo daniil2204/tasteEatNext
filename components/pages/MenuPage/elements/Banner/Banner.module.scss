@@ -1,5 +1,6 @@
 .banner{
     text-align: left;
+    margin-left: 25px;
 }
 
 .title{
@@ -22,10 +23,71 @@
     font-weight: 400;
     line-height: 30px; /* 150% */
     letter-spacing: 0.2px;
+    max-width: 450px;
 }
 
 .imgContainer{
     position: relative;
     width: 398px;
     height: 548px; 
+}
+
+
+@media(max-width:1270px){
+    .title{
+        font-size: 36px;
+    }
+    .subTitle{
+        width: 400px;
+        font-size: 16px;
+    }
+    .imgContainer{
+        width: 358px;
+        height: 508px; 
+    }
+}
+
+
+@media(max-width:1100px){
+    .title{
+        font-size: 30px;
+    }
+    .subTitle{
+        width: 300px;
+        font-size: 12px;
+    }
+    .imgContainer{
+        width: 308px;
+        height: 458px; 
+    }
+}
+
+@media(max-width:940px){
+    .title{
+        font-size: 30px;
+    }
+    .subTitle{
+        width: 250px;
+        font-size: 10px;
+    }
+    .imgContainer{
+        width: 258px;
+        height: 408px; 
+    }
+}
+
+@media(max-width:885px){
+    .banner{
+        text-align: center;
+        margin-left: 0;
+    }
+    .title{
+        font-size: 36px;
+    }
+    .subTitle{
+        display: none;
+    }
+    .imgContainer{
+        display: none;
+    }
 }
