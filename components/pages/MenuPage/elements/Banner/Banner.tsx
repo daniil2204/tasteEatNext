@@ -1,16 +1,8 @@
 import React from 'react'
 import styles from './Banner.module.scss'
 import Image from 'next/image'
-import axios from 'axios'
-
-const getNotes = () => {
-  return axios.get('https://jsonplaceholder.typicode.com/todos/1')
-}
 
 const Banner = () => {
-  const test = getNotes()
-  console.log(test)
-  console.log('banner')
   return (
     <div className={styles.banner}>
       <p className={styles.title}>Try Our Special dishes</p>

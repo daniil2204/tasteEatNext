@@ -1,5 +1,18 @@
 export type sliderType = {
-  type: typeOfFood
+  type: typeOfFoodTitle
 }
 
-export type typeOfFood = 'Dinner' | 'Breakfast' | 'Drink' | 'Dessert'
+export type typeOfFoodTitle = 'Dinner' | 'Breakfast' | 'Drink' | 'Dessert'
+
+export interface dishSliderInterface {
+  id: number
+  description: string
+  image: string
+  price: number
+  title: string
+}
+
+export type dishesAndCategory = {
+  type: typeOfFoodTitle
+  dishes: dishSliderInterface[]
+}

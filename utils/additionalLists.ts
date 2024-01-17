@@ -1,6 +1,6 @@
 import { briefInfoInterface } from '@/types/about'
 import { navListType } from '@/types/header'
-import { typeOfFood } from '@/types/slider'
+import { typeOfFoodTitle } from '@/types/slider'
 
 export const navList: navListType[] = [
   {
@@ -73,7 +73,7 @@ export const briefInfoArray: briefInfoInterface[] = [
   },
 ]
 
-export const typeOfFoodList: typeOfFood[] = [
+export const typeOfFoodListTitle: typeOfFoodTitle[] = [
   'Breakfast',
   'Dinner',
   'Drink',
