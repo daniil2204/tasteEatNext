@@ -1,0 +1,45 @@
+@import '../../../styles/variables.scss';
+
+.whatWeOffer{
+    background: $bg_color;
+    display: flex;
+    justify-content: space-between;
+    padding: 40px;
+}
+
+.textContainer{
+    max-width: 438px;
+    font-style: normal;
+    font-weight: 400;
+    &__header{
+        color: #FFF;
+        font-family: "Josefin Sans";
+        font-size: 15px;        
+        line-height: 22.5px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        text-decoration: underline overline #E1B168;
+    }
+    &__title{
+        color: #FFF;
+        font-family: "Cormorant Infant";
+        font-size: 40px;
+        line-height: 56px; /* 140% */
+        letter-spacing: 0.2px;
+        text-transform: capitalize;
+    }
+    &__description{
+        color: #FFF;
+        font-family: "Josefin Sans";
+        font-size: 20px;
+        line-height: 30px; /* 150% */
+        letter-spacing: 0.2px;
+    }
+}
+
+
+.offerDiscounts{
+    margin: 25px;
+    display: flex;
+    justify-content: space-between;
+}

@@ -79,3 +79,21 @@ export const typeOfFoodListTitle: typeOfFoodTitle[] = [
   'Drink',
   'Dessert',
 ]
+
+export const whatWeOfferBanners = [
+  {
+    src: '/assets/img/Opened24.svg',
+    alt: 'We Open 24/7',
+    title: 'Opened 24/7',
+  },
+  {
+    src: '/assets/img/SpecialMenu.svg',
+    alt: 'Special Menus',
+    title: 'Special Menus',
+  },
+  {
+    src: '/assets/img/Delivery.svg',
+    alt: 'Home Delivery',
+    title: 'Home Delivery',
+  },
+]

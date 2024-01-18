@@ -1,30 +1,31 @@
 import React from 'react'
 import Image from 'next/image'
 import styles from './SliderCard.module.scss'
+import { dishSliderInterface } from '@/types/slider'
+import Link from 'next/link'
 
-const SliderCard = () => {
+const SliderCard = ({
+  id,
+  description,
+  price,
+  title,
+  image,
+}: dishSliderInterface) => {
   return (
-    <div className={styles.dish}>
+    <Link href="/" className={styles.dish}>
       <div className={styles.dish__left}>
         <div className={styles.img}>
-          <Image
-            src="/assets/img/dishImgSlider.svg"
-            alt="test"
-            fill
-            style={{ borderRadius: '50%' }}
-          />
+          <Image src={image} alt="test" fill style={{ borderRadius: '50%' }} />
         </div>
         <div className={styles.text}>
-          <p className={styles.text__title}>Raw Scallops from Erquy</p>
-          <p className={styles.text__desc}>
-            Shuck the scallop to that used for oysters
-          </p>
+          <p className={styles.text__title}>{title}</p>
+          <p className={styles.text__desc}>{description}</p>
         </div>
       </div>
       <div className={styles.dish__right}>
-        <p className={styles.text__title}>$40</p>
+        <p className={styles.text__title}>${price}</p>
       </div>
-    </div>
+    </Link>
   )
 }
 

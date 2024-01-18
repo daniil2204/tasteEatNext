@@ -5,7 +5,7 @@ import MenuSlider from './elements/MenuSlider/MenuSlider'
 
 const MenuPage = () => {
   return (
-    <section className={styles.menuPage}>
+    <section about="Menu Page" className={styles.menuPage}>
       <div className={styles.menu}>
         <p className={`${styles.text} ${styles.title}`}>Menu</p>
         <MenuSlider />

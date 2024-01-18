@@ -3,7 +3,7 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import { getDishes } from '@/services/getDishes'
 import { DishInterface } from '@/types/dishCard'
-import DishCard from '@/components/pages/MenuPage/elements/dishCard/dishCard'
+import DishCard from '@/components/pages/MenuPage/elements/DishCard/dishCard'
 import styles from './List.module.scss'
 import Spinner from '@/components/elements/Spinner/Spinner'
 

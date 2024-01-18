@@ -1,0 +1,73 @@
+.discount{
+    width: 665px;
+    height: 409px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.left{
+    padding-top: 65px;
+    padding-left: 27px;
+}
+
+.imgCloudContainer{
+    position: relative;
+    width: 167px;
+    height: 104px;
+    &__price{
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        position: absolute;
+        color: #292E36;
+        font-family: "Cormorant Infant";
+        font-size: 60px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 66px; 
+        letter-spacing: 0.2px;
+    }
+}
+
+.text{
+    font-weight: 400;
+    font-style: normal;
+}
+
+.offerText{
+    color: #292E36;
+    font-family: "Josefin Sans";
+    font-size: 15px;
+    text-decoration: underline overline #292E36;
+    line-height: 22.5px; 
+    letter-spacing: 4.5px;
+    text-transform: uppercase;
+    margin-top: 43px
+}
+
+.title{
+    color: #292E36;
+    font-family: "Cormorant Infant";
+    font-size: 40px;
+    line-height: 56px; 
+    letter-spacing: 0.2px;
+    margin-top: 8px;
+}
+
+.description{
+    color: #555;
+    max-width: 245px;
+    font-family: "Josefin Sans";
+    font-size: 20px;
+    line-height: 30px; 
+    letter-spacing: 0.2px;
+    margin-top: 5px;
+}
+
+.imgPhotoContainer{
+    position: relative;
+    width: 307px;
+    height: 232px;
+    margin-top: 88px;
+    margin-right: 44px;
+}
