@@ -3,7 +3,7 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import { getDishes } from '@/services/getDishes'
 import { DishInterface } from '@/types/dishCard'
-import DishCard from '@/components/pages/MenuPage/elements/DishCard/dishCard'
+import DishCard from '@/components/pages/MenuPage/elements/DishCard/DishCard'
 import styles from './List.module.scss'
 import Spinner from '@/components/elements/Spinner/Spinner'
 
@@ -16,17 +16,31 @@ const List = () => {
 
   const onRequest = async (offset: number) => {
     setLoading(true)
-    getDishes(offset)
-      .then((res) => {
-        setDishes([...dishes, ...res])
-        res.length !== 4 ? setEnd(true) : null
-      })
-      .then(() => setLoading(false))
-      .then(() => setOffset(offset + 4))
-      .catch(() => {
-        setError(true)
-        setLoading(false)
-      })
+    const local = localStorage.getItem('dishesList')
+
+    if (local && offset === 0) {
+      setDishes(JSON.parse(local))
+      if (JSON.parse(local).length % 4 !== 0) {
+        setEnd(true)
+      }
+      setLoading(false)
+    } else {
+      getDishes({ offset, likes: true })
+        .then((res) => {
+          setDishes([...dishes, ...res])
+          localStorage.setItem(
+            'dishesList',
+            JSON.stringify([...dishes, ...res])
+          )
+          res.length !== 4 ? setEnd(true) : null
+        })
+        .then(() => setLoading(false))
+        .then(() => setOffset(offset + 4))
+        .catch(() => {
+          setError(true)
+          setLoading(false)
+        })
+    }
   }
 
   useEffect(() => {
@@ -44,6 +58,7 @@ const List = () => {
             images={dish.images}
             price={dish.price}
             title={dish.title}
+            discount={dish.discount}
           />
         ))}
       </div>
@@ -57,7 +72,7 @@ const List = () => {
           {loading && <Spinner />}
           <button
             className={styles.btn}
-            onClick={() => onRequest(offset)}
+            onClick={() => onRequest(offset + 4)}
             disabled={end}
             style={end ? { display: 'none' } : { display: 'inline' }}
           >

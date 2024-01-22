@@ -16,6 +16,7 @@ const SliderItem = ({ type, dishes }: sliderType) => {
           image={dish.image}
           title={dish.title}
           price={dish.price}
+          discount={dish.discount}
         />
       ))}
     </div>

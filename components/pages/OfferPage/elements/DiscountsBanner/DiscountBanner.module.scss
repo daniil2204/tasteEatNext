@@ -71,3 +71,70 @@
     margin-top: 88px;
     margin-right: 44px;
 }
+
+@media(max-width:1230px){
+    .discount{
+        height: 339px;
+    }
+    .description{
+        display: none;
+    }
+}
+
+@media(max-width:1150px){
+    .imgCloudContainer{
+        width: 137px;
+        height: 74px;
+        &__price{
+            font-size: 45px
+        }
+    }
+    .offerText{
+        font-size: 11px;
+    }
+    .imgPhotoContainer{
+        width: 277px;
+        height: 202px;
+    }
+}
+
+@media(max-width:680px){
+    .discount{
+        width: 450px;
+    }
+    .title{
+        font-size: 30px;
+    }
+}
+
+@media(max-width:530px){
+    .discount{
+        flex-direction: column;
+        width: 90%;
+    }
+    .left{
+        display: flex;
+        justify-content: space-between;
+    }
+    .offerText{
+        display: none;
+    }
+    .right{
+        display: flex;
+        justify-content: center;
+    }
+    .imgPhotoContainer{
+        margin: 0;
+        width: 200px;
+        height: 150px;
+    }
+}
+
+@media(max-width:440px){
+    .left{
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+    }
+    
+}

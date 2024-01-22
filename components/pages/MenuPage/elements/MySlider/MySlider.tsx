@@ -19,10 +19,19 @@ const MySlider = () => {
 
   const onRequest = async () => {
     setLoading(true)
-    getDishesAndType()
-      .then((res) => setData([...res, ...data]))
-      .then(() => setLoading(false))
-      .catch(() => setError(true))
+    const local = localStorage.getItem('dishesAndCategories')
+    if (local) {
+      setData(JSON.parse(local))
+      setLoading(false)
+    } else {
+      getDishesAndType()
+        .then((res) => {
+          setData([...res, ...data])
+          localStorage.setItem('dishesAndCategories', JSON.stringify(res))
+        })
+        .then(() => setLoading(false))
+        .catch(() => setError(true))
+    }
   }
 
   const settings = {
@@ -32,21 +41,25 @@ const MySlider = () => {
     slidesToScroll: 1,
   }
 
+  const createSlider = () => {
+    return (
+      <Slider {...settings} className={styles.slider}>
+        {data.map((dishes) => (
+          <SliderItem
+            key={dishes.type}
+            type={dishes.type}
+            dishes={dishes.dishes}
+          />
+        ))}
+      </Slider>
+    )
+  }
+
   return (
     <>
       {loading && <Spinner />}
       {error && <div>Error</div>}
-      {!loading && !error && (
-        <Slider {...settings} className={styles.slider}>
-          {data.map((dishes) => (
-            <SliderItem
-              key={dishes.type}
-              type={dishes.type}
-              dishes={dishes.dishes}
-            />
-          ))}
-        </Slider>
-      )}
+      {!loading && !error && data.length ? createSlider() : null}
     </>
   )
 }

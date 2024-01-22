@@ -5,7 +5,9 @@ type images = {
 export interface DishInterface {
   id: number
   title: string
-  images: Array<images>
+  images?: images[]
+  image: string
   price: number
   description: string
+  discount: number
 }

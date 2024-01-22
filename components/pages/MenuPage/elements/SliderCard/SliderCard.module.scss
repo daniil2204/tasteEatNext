@@ -2,7 +2,6 @@
     display: flex;
     justify-content: space-between;
     margin: 10px 25px 0;
-    cursor: pointer;
     &__left{
         display: flex;
         justify-content: space-between;
@@ -30,6 +29,7 @@
         font-family: Cormorant Infant;
         font-size: 30px;   
         line-height: 42px; 
+        cursor: pointer;
     }
     &__desc{
         color: #555;

@@ -11,6 +11,7 @@ export interface dishSliderInterface {
   image: string
   price: number
   title: string
+  discount: number
 }
 
 export type dishesAndCategory = {

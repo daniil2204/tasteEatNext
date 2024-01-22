@@ -2,13 +2,10 @@ import React from 'react'
 import { discountBannerInterface } from '@/types/offer'
 import Image from 'next/image'
 import styles from './DiscountBanner.module.scss'
+import { getPrice } from '@/services/getPrice'
 
-const DiscountBanner = ({
-  bgSrc,
-  cloud,
-  textColor,
-}: discountBannerInterface) => {
-  console.log(bgSrc)
+const DiscountBanner = ({ bannerStyles, dish }: discountBannerInterface) => {
+  const { bgSrc, cloud, textColor } = bannerStyles
   return (
     <div
       className={styles.discount}
@@ -21,22 +18,20 @@ const DiscountBanner = ({
             className={styles.imgCloudContainer__price}
             style={{ color: textColor }}
           >
-            $34
+            ${getPrice(dish.price, dish.discount)}
           </p>
         </div>
-        <p className={`${styles.text} ${styles.offerText}`}>50% Offer Going</p>
-        <p className={`${styles.text} ${styles.title}`}>Chicken Burger</p>
+        <p className={`${styles.text} ${styles.offerText}`}>
+          {dish.discount}% Offer Going
+        </p>
+        <p className={`${styles.text} ${styles.title}`}>{dish.title}</p>
         <p className={`${styles.text} ${styles.description}`}>
-          Chicken burger with the tasty toppings and leaves.
+          {dish.description}
         </p>
       </div>
       <div className={styles.right}>
         <div className={styles.imgPhotoContainer}>
-          <Image
-            fill
-            src={`/assets/img/BannerBurgerTest.svg`}
-            alt="dish photo"
-          />
+          <Image fill src={dish.image} alt="dish photo" />
         </div>
       </div>
     </div>

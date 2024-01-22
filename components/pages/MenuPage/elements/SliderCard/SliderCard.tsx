@@ -3,6 +3,7 @@ import Image from 'next/image'
 import styles from './SliderCard.module.scss'
 import { dishSliderInterface } from '@/types/slider'
 import Link from 'next/link'
+import { getPrice } from '@/services/getPrice'
 
 const SliderCard = ({
   id,
@@ -10,22 +11,30 @@ const SliderCard = ({
   price,
   title,
   image,
+  discount,
 }: dishSliderInterface) => {
   return (
-    <Link href="/" className={styles.dish}>
+    <div className={styles.dish}>
       <div className={styles.dish__left}>
         <div className={styles.img}>
           <Image src={image} alt="test" fill style={{ borderRadius: '50%' }} />
         </div>
         <div className={styles.text}>
-          <p className={styles.text__title}>{title}</p>
+          <Link href={'/'}>
+            <p className={styles.text__title}>{title}</p>
+          </Link>
           <p className={styles.text__desc}>{description}</p>
         </div>
       </div>
       <div className={styles.dish__right}>
-        <p className={styles.text__title}>${price}</p>
+        <p
+          style={{ color: discount ? 'red' : '' }}
+          className={styles.text__title}
+        >
+          ${getPrice(price, discount)}
+        </p>
       </div>
-    </Link>
+    </div>
   )
 }
 

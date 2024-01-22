@@ -7,7 +7,7 @@ import { typeOfFoodListTitle } from '@/utils/additionalLists'
 import api from '../app/axiosInstance'
 
 export async function getDishesByType(type: typeOfFoodTitle) {
-  const { data } = await api.get(`/dish/type/${type.toUpperCase()}`)
+  const { data } = await api.get(`/dish?type=${type.toUpperCase()}`)
   return data
 }
 
