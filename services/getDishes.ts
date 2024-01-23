@@ -8,10 +8,14 @@ export async function getDishes({
   likes,
   type,
 }: getDishes): Promise<DishInterface[]> {
-  const { data } = await api.get(
-    `/dish?${offset ? `offset=${offset}` : ''}${likes ? '&likes=true' : ''}${
-      discount ? `&discount=true` : ''
-    }${type ? `&type=${type}` : ''}`
-  )
-  return data
+  try {
+    const { data } = await api.get(
+      `/dish?${offset ? `offset=${offset}` : ''}${likes ? '&likes=true' : ''}${
+        discount ? `&discount=true` : ''
+      }${type ? `&type=${type}` : ''}`
+    )
+    return data
+  } catch (err) {
+    return []
+  }
 }
