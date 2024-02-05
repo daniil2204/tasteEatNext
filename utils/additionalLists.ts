@@ -1,6 +1,7 @@
 import { briefInfoInterface } from '@/types/about'
 import { navListType } from '@/types/header'
 import { typeOfFoodTitle } from '@/types/slider'
+import { InputValueTypeInterface } from '@/types/auth'
 
 export const navList: navListType[] = [
   {
@@ -95,5 +96,69 @@ export const whatWeOfferBanners = [
     src: '/assets/img/Delivery.svg',
     alt: 'Home Delivery',
     title: 'Home Delivery',
+  },
+]
+
+export const inputsRegisterValue: InputValueTypeInterface[] = [
+  {
+    type: 'email',
+    required: 'Email is required',
+    placeholder: 'Email',
+    minLength: 4,
+    minLengthMsg: 'Enter more than 4 characters',
+    maxLength: 25,
+    maxLengthMsg: 'Enter less than 25 characters',
+  },
+  {
+    type: 'name',
+    required: 'Name is required',
+    placeholder: 'Name',
+    pattern: {
+      value: /^[a-zA-Z]+$/,
+      message: 'He;;p',
+    },
+    minLength: 4,
+    minLengthMsg: 'Enter more than 5 characters',
+    maxLength: 15,
+    maxLengthMsg: 'Enter less than 15 characters',
+  },
+  {
+    type: 'password',
+    required: 'Password is required',
+    placeholder: 'Password',
+    minLength: 4,
+    minLengthMsg: 'Enter more than 4 characters',
+    maxLength: 15,
+    maxLengthMsg: 'Enter less than 15 characters',
+  },
+  {
+    type: 'phone',
+    required: 'Phone is required',
+    placeholder: 'Phone',
+    minLength: 4,
+    minLengthMsg: 'Enter more than 4 characters',
+    maxLength: 15,
+    maxLengthMsg: 'Enter less than 15 characters',
+  },
+]
+
+export const inputsLoginValue: InputValueTypeInterface[] = [
+  {
+    type: 'email',
+    required: 'Email is required',
+    placeholder: 'Email',
+    minLength: 4,
+    minLengthMsg: 'Enter more than 4 characters',
+    maxLength: 25,
+    maxLengthMsg: 'Enter less than 25 characters',
+  },
+  {
+    type: 'password',
+    required: 'Password is required',
+    placeholder: 'Password',
+    minLength: 4,
+    minLengthMsg: 'Enter more than 4 characters',
+    maxLength: 15,
+    maxLengthMsg: 'Enter less than 15 characters',
   },
 ]

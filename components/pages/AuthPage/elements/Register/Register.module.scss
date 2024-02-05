@@ -1,0 +1,34 @@
+.authPage{
+    max-width: 400px;
+    border: 1px solid black;
+    margin: 50px auto;
+    height: 600px;
+    text-align: center;
+}
+
+.title{
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+    color: #292E36;
+    font-family: Cormorant Infant;
+    font-size: 40px;
+    line-height: 56px;
+}
+
+.btn{
+    font-size: 22px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-style: normal;
+    line-height: 33px;
+    letter-spacing: 0.2px;
+    width: 265px;
+    height: 53px;
+    font-weight: 600;
+    border: 2px solid #E1B168;
+    color: #292E36;
+    background: #E1B168;
+    border-radius: 15px;
+    margin-top: 25px;
+}

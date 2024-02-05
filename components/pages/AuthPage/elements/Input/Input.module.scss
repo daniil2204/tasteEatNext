@@ -1,0 +1,25 @@
+.inputWrapper {
+    position: relative;
+}
+
+.input{
+    width: 90%;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    padding-left: 10px;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+.input::placeholder{
+    font-size: 16px;
+}
+
+.alert{
+    position: absolute;
+    font-size: 12px;
+    color: red;
+    bottom: -28px;
+    left: 10px;
+}

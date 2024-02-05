@@ -19,8 +19,7 @@
     height: 188px;
 }
 
-.btn{
-    text-align: center;   
+.btn{ 
     font-size: 22px;
     font-family: 'Josefin Sans', sans-serif;
     font-style: normal;
@@ -28,8 +27,23 @@
     letter-spacing: 0.2px;
     width: 295px;
     height: 73px;
-    cursor: pointer;
     font-weight: 600;
+    display: flex;
+    &__reservation{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &__auth{
+        height: 100%;
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    &__auth:hover {
+        background-color: rebeccapurple;
+    }
     &__call{
         color: #FFF;
         background-color: $bg_color;
@@ -103,7 +117,8 @@
         height: 50px;
         border-radius: 50%;
         text-align: center;
-        p {
+        display: block;
+        a {
                 display: none;
         }
         img{
