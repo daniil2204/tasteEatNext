@@ -1,10 +1,17 @@
-import React from 'react'
+'use client'
+import React, { useEffect } from 'react'
 import styles from './Header.module.scss'
 import Image from 'next/image'
 import Navigation from './elements/navigation/Navigation'
 import Link from 'next/link'
 
 const Header = () => {
+  useEffect(() => {
+    if (window.localStorage.getItem('token')) {
+      console.log('helo')
+    }
+  }, [])
+
   return (
     <header className={styles.header}>
       <div className={styles.banner}>
@@ -26,7 +33,7 @@ const Header = () => {
           width={378}
           height={188}
         />
-        <button className={`${styles.btn} ${styles.btn__call}`}>
+        <div className={`${styles.btn} ${styles.btn__call}`}>
           <Link className={styles.btn__auth} href={'/auth?component=login'}>
             Login
           </Link>
@@ -39,7 +46,7 @@ const Header = () => {
             width={24}
             height={24}
           />
-        </button>
+        </div>
       </div>
       <p className={styles.line} />
       <Navigation />

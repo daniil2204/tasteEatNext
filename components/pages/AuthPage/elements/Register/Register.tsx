@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form'
 import Input from '../Input/Input'
 import { RegisterInterface } from '@/types/auth'
 import { inputsRegisterValue } from '@/utils/additionalLists'
-import { signUp } from '@/app/api/auth'
+import { signUpFx } from '@/app/api/auth'
 import { useRouter } from 'next/navigation'
 
 const Register = () => {
@@ -16,10 +16,14 @@ const Register = () => {
     handleSubmit,
   } = useForm<RegisterInterface>()
   const onSubmit = async (data: RegisterInterface) => {
-    const { email, name, password, phone } = data
-    const user = await signUp({ password, phone, name, email })
-    console.log(user)
-    router.push('/')
+    try {
+      const { email, name, password, phone } = data
+      const user = await signUpFx({ password, phone, name, email })
+      console.log(user)
+      router.push('/')
+    } catch (error) {
+      console.log('err')
+    }
   }
   return (
     <form className={styles.authPage} onSubmit={handleSubmit(onSubmit)}>

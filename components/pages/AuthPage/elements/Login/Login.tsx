@@ -5,8 +5,9 @@ import { useForm } from 'react-hook-form'
 import Input from '../Input/Input'
 import { LoginInterface } from '@/types/auth'
 import { inputsLoginValue } from '@/utils/additionalLists'
-import { signIn } from '@/app/api/auth'
+import { signInFx } from '@/app/api/auth'
 import { useRouter } from 'next/navigation'
+import { toast, ToastContainer } from 'react-toastify'
 
 const Login = () => {
   const router = useRouter()
@@ -17,8 +18,9 @@ const Login = () => {
   } = useForm<LoginInterface>()
   const onSubmit = async (data: LoginInterface) => {
     const { email, password } = data
-    const user = await signIn({ password, email })
+    const user = await signInFx({ password, email })
     console.log(user)
+    toast.success('Hello', { position: 'bottom-right' })
     router.push('/')
   }
   return (
