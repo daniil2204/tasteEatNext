@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import Slider from 'react-slick'
 import SliderItem from '../SliderItem/SliderItem'
-import { getDishesAndType } from '@/services/getDishesByType'
+import { getDishesAndType } from '@/app/api/dish'
 import { dishesAndCategory } from '@/types/slider'
 import styles from '../MenuSlider/MenuSlider.module.scss'
 import Spinner from '@/components/elements/Spinner/Spinner'

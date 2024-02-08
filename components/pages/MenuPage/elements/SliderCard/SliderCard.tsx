@@ -3,7 +3,7 @@ import Image from 'next/image'
 import styles from './SliderCard.module.scss'
 import { dishSliderInterface } from '@/types/slider'
 import Link from 'next/link'
-import { getPrice } from '@/services/getPrice'
+import { getPrice } from '@/utils/getPrice'
 
 const SliderCard = ({
   id,

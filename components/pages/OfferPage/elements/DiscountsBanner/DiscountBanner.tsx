@@ -2,7 +2,7 @@ import React from 'react'
 import { discountBannerInterface } from '@/types/offer'
 import Image from 'next/image'
 import styles from './DiscountBanner.module.scss'
-import { getPrice } from '@/services/getPrice'
+import { getPrice } from '@/utils/getPrice'
 
 const DiscountBanner = ({ bannerStyles, dish }: discountBannerInterface) => {
   const { bgSrc, cloud, textColor } = bannerStyles

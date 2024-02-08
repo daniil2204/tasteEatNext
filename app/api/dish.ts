@@ -1,10 +1,30 @@
+import { getDishes } from '@/types/getDishes'
+import api from '../../app/axiosInstance'
+import { DishInterface } from '@/types/dishCard'
 import {
   typeOfFoodTitle,
   dishSliderInterface,
   dishesAndCategory,
 } from '@/types/slider'
 import { typeOfFoodListTitle } from '@/utils/additionalLists'
-import api from '../app/axiosInstance'
+
+export async function getDishes({
+  offset,
+  discount,
+  likes,
+  type,
+}: getDishes): Promise<DishInterface[]> {
+  try {
+    const { data } = await api.get(
+      `/dish?${offset ? `offset=${offset}` : ''}${likes ? '&likes=true' : ''}${
+        discount ? `&discount=true` : ''
+      }${type ? `&type=${type}` : ''}`
+    )
+    return data
+  } catch (err) {
+    return []
+  }
+}
 
 export async function getDishesByType(type: typeOfFoodTitle) {
   const { data } = await api.get(`/dish?type=${type.toUpperCase()}`)

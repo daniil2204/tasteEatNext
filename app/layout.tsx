@@ -2,6 +2,10 @@ import type { Metadata } from 'next'
 import './globals.scss'
 import Header from '@/components/elements/Header/Header'
 import Footer from '@/components/elements/Footer/Footer'
+import { AppWrapper } from '@/context/user'
+import QueryProvider from '@/queryClient/Provider'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 export const metadata: Metadata = {
   title: 'TasteEat',
@@ -16,9 +20,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Header />
-        <main className="container">{children}</main>
-        <Footer />
+        <AppWrapper>
+          <QueryProvider>
+            <Header />
+            <main className="container">{children}</main>
+            <Footer />
+            <ToastContainer />
+          </QueryProvider>
+        </AppWrapper>
       </body>
     </html>
   )

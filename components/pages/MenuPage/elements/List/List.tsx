@@ -1,11 +1,12 @@
 'use client'
 import React from 'react'
 import { useEffect, useState } from 'react'
-import { getDishes } from '@/services/getDishes'
+import { getDishes } from '@/app/api/dish'
 import { DishInterface } from '@/types/dishCard'
 import DishCard from '@/components/pages/MenuPage/elements/DishCard/DishCard'
 import styles from './List.module.scss'
 import Spinner from '@/components/elements/Spinner/Spinner'
+import { useQuery } from '@tanstack/react-query'
 
 const List = () => {
   const [dishes, setDishes] = useState<DishInterface[]>([])
@@ -13,39 +14,44 @@ const List = () => {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
   const [end, setEnd] = useState(false)
+  const { data, isLoading } = useQuery({
+    queryKey: ['dishList'],
+    queryFn: async () => await getDishes({ offset }),
+  })
+  console.log(data)
 
-  const onRequest = async (offset: number) => {
-    setLoading(true)
-    const local = localStorage.getItem('dishesList')
+  // const onRequest = async (offset: number) => {
+  //   setLoading(true)
+  //   const local = localStorage.getItem('dishesList')
 
-    if (local && offset === 0) {
-      setDishes(JSON.parse(local))
-      if (JSON.parse(local).length % 4 !== 0) {
-        setEnd(true)
-      }
-      setLoading(false)
-    } else {
-      getDishes({ offset, likes: true })
-        .then((res) => {
-          setDishes([...dishes, ...res])
-          localStorage.setItem(
-            'dishesList',
-            JSON.stringify([...dishes, ...res])
-          )
-          res.length !== 4 ? setEnd(true) : null
-        })
-        .then(() => setLoading(false))
-        .then(() => setOffset(offset + 4))
-        .catch(() => {
-          setError(true)
-          setLoading(false)
-        })
-    }
-  }
+  //   if (local && offset === 0) {
+  //     setDishes(JSON.parse(local))
+  //     if (JSON.parse(local).length % 4 !== 0) {
+  //       setEnd(true)
+  //     }
+  //     setLoading(false)
+  //   } else {
+  //     getDishes({ offset, likes: true })
+  //       .then((res) => {
+  //         setDishes([...dishes, ...res])
+  //         localStorage.setItem(
+  //           'dishesList',
+  //           JSON.stringify([...dishes, ...res])
+  //         )
+  //         res.length !== 4 ? setEnd(true) : null
+  //       })
+  //       .then(() => setLoading(false))
+  //       .then(() => setOffset(offset + 4))
+  //       .catch(() => {
+  //         setError(true)
+  //         setLoading(false)
+  //       })
+  //   }
+  // }
 
-  useEffect(() => {
-    onRequest(offset)
-  }, [])
+  // useEffect(() => {
+  //   onRequest(offset)
+  // }, [])
 
   const createDish = (dishes: DishInterface[]) => {
     return (
@@ -72,7 +78,7 @@ const List = () => {
           {loading && <Spinner />}
           <button
             className={styles.btn}
-            onClick={() => onRequest(offset + 4)}
+            // onClick={() => onRequest(offset + 4)}
             disabled={end}
             style={end ? { display: 'none' } : { display: 'inline' }}
           >

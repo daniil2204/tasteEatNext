@@ -5,11 +5,13 @@ import { useForm } from 'react-hook-form'
 import Input from '../Input/Input'
 import { LoginInterface } from '@/types/auth'
 import { inputsLoginValue } from '@/utils/additionalLists'
-import { signInFx } from '@/app/api/auth'
+import { signIn } from '@/app/api/auth'
 import { useRouter } from 'next/navigation'
-import { toast, ToastContainer } from 'react-toastify'
+import { toast } from 'react-toastify'
+import { useAppContext } from '@/context/user'
 
 const Login = () => {
+  const { setUser } = useAppContext()
   const router = useRouter()
   const {
     register,
@@ -17,11 +19,20 @@ const Login = () => {
     handleSubmit,
   } = useForm<LoginInterface>()
   const onSubmit = async (data: LoginInterface) => {
-    const { email, password } = data
-    const user = await signInFx({ password, email })
-    console.log(user)
-    toast.success('Hello', { position: 'bottom-right' })
-    router.push('/')
+    try {
+      const { email, password } = data
+      const user = await signIn({ password, email })
+      setUser({
+        email: user.email,
+        phone: user.phone,
+        name: user.name,
+        id: user.id,
+      })
+      toast.success(`Login was successful`, { position: 'bottom-right' })
+      router.push('/')
+    } catch (error) {
+      toast.error('Email or password are wrong', { position: 'bottom-right' })
+    }
   }
   return (
     <form className={styles.authPage} onSubmit={handleSubmit(onSubmit)}>

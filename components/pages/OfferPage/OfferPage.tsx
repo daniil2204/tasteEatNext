@@ -3,7 +3,7 @@ import styles from './OfferPage.module.scss'
 import OfferBanner from './elements/OfferBanner/OfferBanner'
 import DiscountBanner from './elements/DiscountsBanner/DiscountBanner'
 import { whatWeOfferBanners } from '@/utils/additionalLists'
-import { getDishes } from '@/services/getDishes'
+import { getDishes } from '@/app/api/dish'
 import { bannerInterface } from '@/types/offer'
 
 const OfferPage = async () => {
