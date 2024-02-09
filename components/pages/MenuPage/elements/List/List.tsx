@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { getDishes } from '@/app/api/dish'
 import { DishInterface } from '@/types/dishCard'
 import DishCard from '@/components/pages/MenuPage/elements/DishCard/DishCard'
@@ -9,16 +9,10 @@ import Spinner from '@/components/elements/Spinner/Spinner'
 import { useQuery } from '@tanstack/react-query'
 
 const List = () => {
-  const [dishes, setDishes] = useState<DishInterface[]>([])
-  const [offset, setOffset] = useState(0)
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(false)
-  const [end, setEnd] = useState(false)
-  const { data, isLoading } = useQuery({
-    queryKey: ['dishList'],
-    queryFn: async () => await getDishes({ offset }),
-  })
-  console.log(data)
+  //const [dishes, setDishes] = useState<DishInterface[]>([])
+  //const [loading, setLoading] = useState(false)
+  //const [error, setError] = useState(false)
+  //const [end, setEnd] = useState(false)
 
   // const onRequest = async (offset: number) => {
   //   setLoading(true)
@@ -53,34 +47,45 @@ const List = () => {
   //   onRequest(offset)
   // }, [])
 
+  const [offset, setOffset] = useState(0)
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ['dishList'],
+    queryFn: async () => await getDishes({ offset }),
+  })
+
   const createDish = (dishes: DishInterface[]) => {
     return (
       <div className={styles.menuGrid}>
-        {dishes.map((dish) => (
-          <DishCard
-            key={dish.id}
-            id={dish.id}
-            description={dish.description}
-            images={dish.images}
-            price={dish.price}
-            title={dish.title}
-            discount={dish.discount}
-          />
-        ))}
+        {!isLoading &&
+          data.map((dish) => (
+            <DishCard
+              key={dish.id}
+              id={dish.id}
+              description={dish.description}
+              images={dish.images}
+              price={dish.price}
+              title={dish.title}
+              discount={dish.discount}
+            />
+          ))}
       </div>
     )
   }
   return (
     <>
-      {!error && (
+      {!isError && (
         <>
-          {createDish(dishes)}
-          {loading && <Spinner />}
+          {data && createDish(data)}
+          {isLoading && <Spinner />}
           <button
             className={styles.btn}
-            // onClick={() => onRequest(offset + 4)}
-            disabled={end}
-            style={end ? { display: 'none' } : { display: 'inline' }}
+            onClick={() => setOffset((offset) => offset + 4)}
+            disabled={data ? data?.length % 4 !== 0 : false}
+            style={
+              data && data?.length % 4 !== 0
+                ? { display: 'none' }
+                : { display: 'inline' }
+            }
           >
             <p>Load More</p>
           </button>

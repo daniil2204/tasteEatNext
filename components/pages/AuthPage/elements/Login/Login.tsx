@@ -9,9 +9,28 @@ import { signIn } from '@/app/api/auth'
 import { useRouter } from 'next/navigation'
 import { toast } from 'react-toastify'
 import { useAppContext } from '@/context/user'
+import { useMutation } from '@tanstack/react-query'
 
 const Login = () => {
   const { setUser } = useAppContext()
+  const { mutate } = useMutation({
+    mutationFn: ({ email, password }: LoginInterface) =>
+      signIn({ email, password }),
+    onSuccess(data) {
+      const { email, id, phone, name } = data
+      setUser({
+        email,
+        phone,
+        name,
+        id,
+      })
+      toast.success(`Login was successful`, { position: 'bottom-right' })
+      router.push('/')
+    },
+    onError() {
+      toast.error('Email or password are wrong', { position: 'bottom-right' })
+    },
+  })
   const router = useRouter()
   const {
     register,
@@ -19,20 +38,24 @@ const Login = () => {
     handleSubmit,
   } = useForm<LoginInterface>()
   const onSubmit = async (data: LoginInterface) => {
-    try {
-      const { email, password } = data
-      const user = await signIn({ password, email })
-      setUser({
-        email: user.email,
-        phone: user.phone,
-        name: user.name,
-        id: user.id,
-      })
-      toast.success(`Login was successful`, { position: 'bottom-right' })
-      router.push('/')
-    } catch (error) {
-      toast.error('Email or password are wrong', { position: 'bottom-right' })
-    }
+    const { email, password } = data
+    mutate({ email, password })
+    // try {
+    //   const { email, password } = data
+    //   mutate({ email, password })
+
+    //   // const user = await signIn({ password, email })
+    //   // setUser({
+    //   //   email: user.email,
+    //   //   phone: user.phone,
+    //   //   name: user.name,
+    //   //   id: user.id,
+    //   // })
+    //   // toast.success(`Login was successful`, { position: 'bottom-right' })
+    //   // router.push('/')
+    // } catch (error) {
+    //   // toast.error('Email or password are wrong', { position: 'bottom-right' })
+    // }
   }
   return (
     <form className={styles.authPage} onSubmit={handleSubmit(onSubmit)}>

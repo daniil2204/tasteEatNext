@@ -1,38 +1,43 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Slider from 'react-slick'
 import SliderItem from '../SliderItem/SliderItem'
 import { getDishesAndType } from '@/app/api/dish'
-import { dishesAndCategory } from '@/types/slider'
 import styles from '../MenuSlider/MenuSlider.module.scss'
 import Spinner from '@/components/elements/Spinner/Spinner'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
+import { useQuery } from '@tanstack/react-query'
 
 const MySlider = () => {
-  const [data, setData] = useState<dishesAndCategory[]>([])
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(false)
-  useEffect(() => {
-    onRequest()
-  }, [])
+  // const [data, setData] = useState<dishesAndCategory[]>([])
+  // const [loading, setLoading] = useState(false)
+  // const [error, setError] = useState(false)
+  // useEffect(() => {
+  //   onRequest()
+  // }, [])
 
-  const onRequest = async () => {
-    setLoading(true)
-    const local = localStorage.getItem('dishesAndCategories')
-    if (local) {
-      setData(JSON.parse(local))
-      setLoading(false)
-    } else {
-      getDishesAndType()
-        .then((res) => {
-          setData([...res, ...data])
-          localStorage.setItem('dishesAndCategories', JSON.stringify(res))
-        })
-        .then(() => setLoading(false))
-        .catch(() => setError(true))
-    }
-  }
+  // const onRequest = async () => {
+  //   setLoading(true)
+  //   const local = localStorage.getItem('dishesAndCategories')
+  //   if (local) {
+  //     setData(JSON.parse(local))
+  //     setLoading(false)
+  //   } else {
+  //     getDishesAndType()
+  //       .then((res) => {
+  //         setData([...res, ...data])
+  //         localStorage.setItem('dishesAndCategories', JSON.stringify(res))
+  //       })
+  //       .then(() => setLoading(false))
+  //       .catch(() => setError(true))
+  //   }
+  // }
+
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ['dishSlider'],
+    queryFn: async () => await getDishesAndType(),
+  })
 
   const settings = {
     infinite: true,
@@ -57,9 +62,9 @@ const MySlider = () => {
 
   return (
     <>
-      {loading && <Spinner />}
-      {error && <div>Error</div>}
-      {!loading && !error && data.length ? createSlider() : null}
+      {isLoading && <Spinner />}
+      {isError && <div>Error</div>}
+      {!isLoading && !isError && data && data.length ? createSlider() : null}
     </>
   )
 }
