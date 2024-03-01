@@ -1,0 +1,41 @@
+.reservationPage{
+    background-image: url('/assets/img/ReservartionBG.svg');
+    max-width: 1440px;
+    height: 977px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.formBg{
+    width: 920px;
+    height: 697px;
+    background: rgba(41, 46, 54, 0.95);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: 400;
+    
+}
+.title{
+    font-family: Cormorant Infant;
+    text-decoration: underline overline #E1B168;
+    font-size: 15px;
+    line-height: 150%;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #fff;
+}
+.mainText{
+    font-family: Josefin Sans;
+    font-size: 40px;
+    line-height: 140%;
+    letter-spacing: 0.01em;
+    text-transform: capitalize;
+    color: #fff;
+    margin-top: 10px;
+}

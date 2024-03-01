@@ -6,7 +6,7 @@ export interface DishInterface {
   id: number
   title: string
   images?: images[]
-  image: string
+  image?: string
   price: number
   description: string
   discount: number

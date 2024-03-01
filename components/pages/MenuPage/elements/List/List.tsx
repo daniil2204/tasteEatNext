@@ -9,44 +9,6 @@ import Spinner from '@/components/elements/Spinner/Spinner'
 import { useQuery } from '@tanstack/react-query'
 
 const List = () => {
-  //const [dishes, setDishes] = useState<DishInterface[]>([])
-  //const [loading, setLoading] = useState(false)
-  //const [error, setError] = useState(false)
-  //const [end, setEnd] = useState(false)
-
-  // const onRequest = async (offset: number) => {
-  //   setLoading(true)
-  //   const local = localStorage.getItem('dishesList')
-
-  //   if (local && offset === 0) {
-  //     setDishes(JSON.parse(local))
-  //     if (JSON.parse(local).length % 4 !== 0) {
-  //       setEnd(true)
-  //     }
-  //     setLoading(false)
-  //   } else {
-  //     getDishes({ offset, likes: true })
-  //       .then((res) => {
-  //         setDishes([...dishes, ...res])
-  //         localStorage.setItem(
-  //           'dishesList',
-  //           JSON.stringify([...dishes, ...res])
-  //         )
-  //         res.length !== 4 ? setEnd(true) : null
-  //       })
-  //       .then(() => setLoading(false))
-  //       .then(() => setOffset(offset + 4))
-  //       .catch(() => {
-  //         setError(true)
-  //         setLoading(false)
-  //       })
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   onRequest(offset)
-  // }, [])
-
   const [offset, setOffset] = useState(0)
   const { data, isLoading, isError } = useQuery({
     queryKey: ['dishList'],
@@ -57,7 +19,7 @@ const List = () => {
     return (
       <div className={styles.menuGrid}>
         {!isLoading &&
-          data.map((dish) => (
+          dishes.map((dish) => (
             <DishCard
               key={dish.id}
               id={dish.id}

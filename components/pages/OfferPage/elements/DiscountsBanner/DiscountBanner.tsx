@@ -31,7 +31,7 @@ const DiscountBanner = ({ bannerStyles, dish }: discountBannerInterface) => {
       </div>
       <div className={styles.right}>
         <div className={styles.imgPhotoContainer}>
-          <Image fill src={dish.image} alt="dish photo" />
+          <Image fill src={dish.image ? dish.image : ''} alt="dish photo" />
         </div>
       </div>
     </div>
