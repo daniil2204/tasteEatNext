@@ -40,22 +40,6 @@ const Login = () => {
   const onSubmit = async (data: LoginInterface) => {
     const { email, password } = data
     mutate({ email, password })
-    // try {
-    //   const { email, password } = data
-    //   mutate({ email, password })
-
-    //   // const user = await signIn({ password, email })
-    //   // setUser({
-    //   //   email: user.email,
-    //   //   phone: user.phone,
-    //   //   name: user.name,
-    //   //   id: user.id,
-    //   // })
-    //   // toast.success(`Login was successful`, { position: 'bottom-right' })
-    //   // router.push('/')
-    // } catch (error) {
-    //   // toast.error('Email or password are wrong', { position: 'bottom-right' })
-    // }
   }
   return (
     <form className={styles.authPage} onSubmit={handleSubmit(onSubmit)}>

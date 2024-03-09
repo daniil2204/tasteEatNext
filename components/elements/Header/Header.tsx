@@ -11,14 +11,9 @@ import { toast } from 'react-toastify'
 const Header = () => {
   const { user, setUser } = useAppContext()
   const getUser = async () => {
-    const token = localStorage.getItem('token')
-    if (token) {
-      try {
-        const user = await getMe(token)
-        setUser(user)
-      } catch (error) {
-        toast.warning('Please login or register', { position: 'bottom-right' })
-      }
+    const user = await getMe()
+    if (user) {
+      setUser(user)
     } else {
       toast.warning('Please login or register', { position: 'bottom-right' })
     }

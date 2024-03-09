@@ -31,12 +31,19 @@ export const signIn = async ({ email, password }: LoginInterface) => {
   return data
 }
 
-export const getMe = async (token: string) => {
-  const { data }: { data: UserInterface } = await api.get('/auth/me', {
-    headers: { Authorization: `Bearer ${token}` },
-  })
-  if (data.token) {
-    localStorage.setItem('token', data.token)
+export const getMe = async () => {
+  const token = localStorage.getItem('token')
+  if (token) {
+    try {
+      const { data }: { data: UserInterface } = await api.get('/auth/me', {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      if (data.token) {
+        localStorage.setItem('token', data.token)
+      }
+      return data
+    } catch (err) {
+      localStorage.removeItem('token')
+    }
   }
-  return data
 }
