@@ -39,6 +39,7 @@ const Header = () => {
             Register
           </Link>
           <Image
+            className={styles.btn__userImg}
             src={'/assets/img/call.svg'}
             alt="call"
             width={24}
@@ -47,6 +48,21 @@ const Header = () => {
         </>
       )
     }
+  }
+
+  const renderCart = () => {
+    return (
+      <div className={styles.userCart}>
+        <Link href={'/bucket'}>
+          <Image
+            src={'/assets/img/cart.svg'}
+            alt="call"
+            width={24}
+            height={24}
+          />
+        </Link>
+      </div>
+    )
   }
 
   return (
@@ -70,10 +86,13 @@ const Header = () => {
           width={378}
           height={188}
         />
-        <div className={`${styles.btn} ${styles.btn__call}`}>{btnRender()}</div>
+        <div className={`${styles.btn} ${styles.btn__userBtn}`}>
+          {btnRender()}
+        </div>
       </div>
       <p className={styles.line} />
       <Navigation />
+      {user && renderCart()}
     </header>
   )
 }

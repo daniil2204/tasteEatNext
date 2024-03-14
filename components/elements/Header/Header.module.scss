@@ -41,6 +41,10 @@
         justify-content: center;
         cursor: pointer;
     }
+    &__userImg{
+        display: none;
+        filter: invert(100%) sepia(0%) saturate(1498%) hue-rotate(319deg) brightness(122%) contrast(100%);
+    }
     &__auth{
         height: 100%;
         width: 50%;
@@ -52,14 +56,10 @@
     &__auth:hover {
         background-color: rebeccapurple;
     }
-    &__call{
+    &__userBtn{
         color: #FFF;
         background-color: $bg_color;
         border: 2px solid #E1B168;
-        img{
-            display: none;
-            filter: invert(100%) sepia(0%) saturate(1498%) hue-rotate(319deg) brightness(122%) contrast(100%);
-        }
     }
     &__reservation{
         border: 2px solid #E1B168;
@@ -69,6 +69,23 @@
             display: none;
         }
 
+    }
+}
+
+.userCart {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    background-color: whitesmoke;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+        filter: invert(100%) sepia(0%) saturate(1498%) hue-rotate(319deg) brightness(122%) contrast(100%);
     }
 }
 
