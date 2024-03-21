@@ -25,6 +25,10 @@ export const navList: navListType[] = [
     href: '/blog',
   },
   {
+    title: 'Reservation',
+    href: '/reservation',
+  },
+  {
     title: 'Contact Us',
     href: '/contact',
   },

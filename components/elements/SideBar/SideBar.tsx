@@ -12,7 +12,6 @@ const SideBar = ({ isOpen, setIsOpen }: sideBarInterface) => {
   }
 
   const createNav = (navList: navListType[]) => {
-    console.log('')
     return (
       <div className={styles.container}>
         <Image

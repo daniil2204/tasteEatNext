@@ -4,7 +4,7 @@
 .header{
     padding: 50px;
     background-color: $bg_color;
-    max-width: 1440px;
+    // max-width: 1440px;
     margin: 0 auto;
 }
 
@@ -29,10 +29,13 @@
     height: 73px;
     font-weight: 600;
     display: flex;
-    &__reservation{
+    &__bucket{
         display: flex;
         justify-content: center;
         align-items: center;
+        img {
+            filter: invert(100%) sepia(0%) saturate(1498%) hue-rotate(319deg) brightness(122%) contrast(100%);
+        }
     }
     &__user{
         width: 100%;
@@ -40,6 +43,9 @@
         align-items: center;
         justify-content: center;
         cursor: pointer;
+        img {
+            display: none;
+        }
     }
     &__userImg{
         display: none;
@@ -61,7 +67,7 @@
         background-color: $bg_color;
         border: 2px solid #E1B168;
     }
-    &__reservation{
+    &__bucket{
         border: 2px solid #E1B168;
         color: #292E36;
         background: #E1B168;
@@ -72,25 +78,9 @@
     }
 }
 
-.userCart {
-    position: fixed;
-    bottom: 15px;
-    right: 15px;
-    background-color: whitesmoke;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    z-index: 2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    img {
-        filter: invert(100%) sepia(0%) saturate(1498%) hue-rotate(319deg) brightness(122%) contrast(100%);
-    }
-}
 
 .line{
-    max-width: 1440px;
+    width: 105.5%;
     margin: 49px -50px 0;
     height: 1px;
     background: #5C6168;
@@ -143,8 +133,17 @@
         border-radius: 50%;
         text-align: center;
         display: block;
-        a {
+        &__auth {
                 display: none;
+        }
+        &__bucket a {
+            display: none;
+        }
+        &__user {
+            font-size: 0;
+            img {
+                display: inline;
+            }
         }
         img{
                 margin-top: 10px;

@@ -30,7 +30,7 @@ body::-webkit-scrollbar-thumb:hover{
   overflow: hidden;
 }
 .container{
-  max-width: 1440px;
+  // max-width: 1440px;
   margin: 0 auto;
   position: relative;
 }
@@ -41,6 +41,7 @@ li{
 
 a, button{
   all: unset;
+  cursor: pointer;
 }
 
 button{

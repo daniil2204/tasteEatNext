@@ -27,6 +27,13 @@ const Header = () => {
       return (
         <Link className={styles.btn__user} href={'/user'}>
           {user.name}
+          <Image
+            className={styles.btn__userImg}
+            src={'/assets/img/user.svg'}
+            alt="user"
+            width={24}
+            height={24}
+          />
         </Link>
       )
     } else {
@@ -38,47 +45,26 @@ const Header = () => {
           <Link className={styles.btn__auth} href={'/auth?component=register'}>
             Register
           </Link>
-          <Image
-            className={styles.btn__userImg}
-            src={'/assets/img/call.svg'}
-            alt="call"
-            width={24}
-            height={24}
-          />
+          <Link href={user ? 'user' : '/auth?component=login'}>
+            <Image
+              className={styles.btn__userImg}
+              src={'/assets/img/user.svg'}
+              alt="user"
+              width={24}
+              height={24}
+            />
+          </Link>
         </>
       )
     }
   }
 
-  const renderCart = () => {
-    return (
-      <div className={styles.userCart}>
-        <Link href={'/bucket'}>
-          <Image
-            src={'/assets/img/cart.svg'}
-            alt="call"
-            width={24}
-            height={24}
-          />
-        </Link>
-      </div>
-    )
-  }
-
   return (
     <header className={styles.header}>
       <div className={styles.banner}>
-        <button className={`${styles.btn} ${styles.btn__reservation}`}>
-          <Link href={'/reservation'} className={styles.btn__resevation}>
-            Reservation
-          </Link>
-          <Image
-            src={'/assets/img/reservationIcon.svg'}
-            alt="reservation"
-            width={20}
-            height={20}
-          />
-        </button>
+        <div className={`${styles.btn} ${styles.btn__userBtn}`}>
+          {btnRender()}
+        </div>
         <Image
           className={styles.logo}
           alt="restaurant logo"
@@ -86,13 +72,20 @@ const Header = () => {
           width={378}
           height={188}
         />
-        <div className={`${styles.btn} ${styles.btn__userBtn}`}>
-          {btnRender()}
-        </div>
+        <button className={`${styles.btn} ${styles.btn__bucket}`}>
+          <Link href={'/bucket'} className={styles.btn__bucket}>
+            Bucket
+          </Link>
+          <Image
+            src={'/assets/img/cart.svg'}
+            alt="shopCart"
+            width={24}
+            height={24}
+          />
+        </button>
       </div>
       <p className={styles.line} />
       <Navigation />
-      {user && renderCart()}
     </header>
   )
 }

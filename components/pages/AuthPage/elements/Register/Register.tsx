@@ -1,5 +1,6 @@
 'use client'
 import React from 'react'
+import formStyle from '../../AuthPage.module.scss'
 import styles from './Register.module.scss'
 import { useForm } from 'react-hook-form'
 import Input from '../Input/Input'
@@ -56,7 +57,7 @@ const Register = () => {
     // }
   }
   return (
-    <form className={styles.authPage} onSubmit={handleSubmit(onSubmit)}>
+    <form className={formStyle.authForm} onSubmit={handleSubmit(onSubmit)}>
       <p className={styles.title}>SignUp</p>
       {inputsRegisterValue.map((input) => (
         <Input
