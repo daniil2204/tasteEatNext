@@ -1,7 +1,6 @@
 .reservationPage{
     background-image: url('/assets/img/ReservartionBG.svg');
-    max-width: 1440px;
-    height: 977px;
+    max-height: 977px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,6 +18,7 @@
     align-items: center;
     justify-content: center;
     font-weight: 400;
+    margin: 20px 0;
     
 }
 .title{

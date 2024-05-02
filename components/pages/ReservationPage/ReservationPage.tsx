@@ -1,18 +1,9 @@
 import React from 'react'
 import styles from './ReservationPage.module.scss'
+import { getMinAndMaxDate } from '@/utils/getMinAndMaxDate'
 
 const ReservationPage = () => {
-  const day =
-    new Date().getDate() > 10
-      ? new Date().getDate()
-      : `0${new Date().getDate()}`
-  const month =
-    new Date().getMonth() > 10
-      ? new Date().getMonth() + 1
-      : `0${new Date().getMonth() + 1}`
-  const year = new Date().getFullYear()
-  const minValue = `${year}-${month}-${day}`
-  console.log(minValue)
+  const { minValue, maxValue } = getMinAndMaxDate(14)
   return (
     <section className={styles.reservationPage} about="reservation page">
       <div className={styles.formBg}>
@@ -21,6 +12,7 @@ const ReservationPage = () => {
         <input
           type="date"
           min={minValue}
+          max={maxValue}
           style={{
             width: '130px',
             height: '35px',
