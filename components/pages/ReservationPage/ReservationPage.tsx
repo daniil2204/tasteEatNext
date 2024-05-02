@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './ReservationPage.module.scss'
+import ReservationTable from './elements/ReservationTable/ReservationTable'
 import { getMinAndMaxDate } from '@/utils/getMinAndMaxDate'
 
 const ReservationPage = () => {
@@ -9,22 +10,27 @@ const ReservationPage = () => {
       <div className={styles.formBg}>
         <p className={styles.title}>Reservation</p>
         <p className={styles.mainText}>Book Your Table</p>
-        <input
-          type="date"
-          min={minValue}
-          max={maxValue}
-          style={{
-            width: '130px',
-            height: '35px',
-            borderRadius: '15px',
-            padding: '10px',
-          }}
-        />
-        <select>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-        </select>
+        <div className={styles.settings}>
+          <div className={styles.date}>
+            <p className={styles.settings__text}>Select date</p>
+            <input
+              type="date"
+              min={minValue}
+              max={maxValue}
+              className={styles.settings__inputs}
+            />
+          </div>
+          <div className={styles.count}>
+            <p className={styles.settings__text}>Select number of guests</p>
+            <select className={styles.settings__inputs}>
+              {[1, 2, 3, 4, 5].map((item) => (
+                <option key={item}>{item}</option>
+              ))}
+            </select>
+          </div>
+        </div>
+        <button className={styles.reserveBtn}>Reserve a table</button>
+        <ReservationTable />
       </div>
     </section>
   )
