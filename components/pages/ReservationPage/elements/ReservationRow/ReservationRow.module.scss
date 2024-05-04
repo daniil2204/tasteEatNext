@@ -1,0 +1,28 @@
+.reservation{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+    color: white;
+    border-bottom: 1px solid gray;
+    padding-bottom: 10px;
+}
+
+.reservation__select {
+    width: 50px;
+    background: #E1B168;
+    font-size: 16px;
+    color: #292E36;
+    border-radius: 10px;
+    padding: 2px;
+}
+
+.reservation__button {
+    background: #E1B168;
+    text-align: center;
+    color: #292E36;
+    font-family: Josefin Sans;
+    border-radius: 10px;
+    padding: 10px;
+}
