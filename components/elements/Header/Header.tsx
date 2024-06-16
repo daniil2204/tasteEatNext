@@ -21,7 +21,6 @@ const Header = () => {
   useEffect(() => {
     getUser()
   }, [])
-
   const btnRender = () => {
     if (user) {
       return (

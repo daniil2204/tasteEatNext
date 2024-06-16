@@ -49,13 +49,14 @@ const MySlider = () => {
   const createSlider = () => {
     return (
       <Slider {...settings} className={styles.slider}>
-        {data.map((dishes) => (
-          <SliderItem
-            key={dishes.type}
-            type={dishes.type}
-            dishes={dishes.dishes}
-          />
-        ))}
+        {data &&
+          data.map((dishes) => (
+            <SliderItem
+              key={dishes.type}
+              type={dishes.type}
+              dishes={dishes.dishes}
+            />
+          ))}
       </Slider>
     )
   }

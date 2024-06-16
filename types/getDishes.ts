@@ -1,4 +1,4 @@
-export interface getDishes {
+export interface IGetDishes {
   offset?: number
   likes?: boolean
   discount?: boolean

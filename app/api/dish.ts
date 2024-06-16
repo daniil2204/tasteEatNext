@@ -1,4 +1,4 @@
-import { getDishes } from '@/types/getDishes'
+import { IGetDishes } from '@/types/getDishes'
 import api from '../../app/axiosInstance'
 import { DishInterface } from '@/types/dishCard'
 import {
@@ -13,7 +13,7 @@ export async function getDishes({
   discount,
   likes,
   type,
-}: getDishes): Promise<DishInterface[]> {
+}: IGetDishes): Promise<DishInterface[]> {
   try {
     const { data } = await api.get(
       `/dish?${offset ? `offset=${offset}` : ''}${likes ? '&likes=true' : ''}${

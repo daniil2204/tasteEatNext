@@ -1,18 +1,38 @@
 import React from 'react'
 import ReservationRow from '../ReservationRow/ReservationRow'
 import styles from './ReservationTable.module.scss'
+import { IReservatioTable } from '@/types/reservation'
+import Spinner from '@/components/elements/Spinner/Spinner'
 
-const ReservationTable = () => {
-  console.log()
+const ReservationTable = ({
+  freeTables,
+  loading,
+  error,
+  date,
+}: IReservatioTable) => {
   return (
     <div className={styles.reservationTable}>
-      <p>Reservation</p>
-      <ReservationRow
-        tableNumber={2}
-        numberOfQuests={3}
-        bookingTime={[1, 2, 3]}
-      />
-      <ReservationRow tableNumber={5} numberOfQuests={2} bookingTime={[1, 2]} />
+      <p className={styles.reservationTitle}>Reservations</p>
+      {!loading ? (
+        freeTables.length > 0 ? (
+          freeTables.map((item) => (
+            <ReservationRow
+              countOfQuests={item.countOfQuests}
+              id={item.id}
+              key={item.id}
+              date={date}
+            />
+          ))
+        ) : !error ? (
+          <p className={styles.reservationWarning}>
+            Select the date and number of guests
+          </p>
+        ) : (
+          <p className={styles.reservationWarning}>{error}</p>
+        )
+      ) : (
+        <Spinner />
+      )}
     </div>
   )
 }
