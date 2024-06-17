@@ -1,12 +1,15 @@
 .reservation{
     margin-top: 20px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    gap: 20px;
     color: white;
     border-bottom: 1px solid gray;
     padding-bottom: 10px;
+}
+
+.reservation__info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
 }
 
 .reservation__select {
@@ -18,6 +21,18 @@
     padding: 2px;
 }
 
+.reservationBtn{
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    select {
+        width: 50px;
+        height: 30px;
+        border-radius: 10px;
+    }
+}
+
 .reservation__button {
     background: #E1B168;
     text-align: center;
@@ -25,4 +40,19 @@
     font-family: Josefin Sans;
     border-radius: 10px;
     padding: 10px;
+}
+
+.timeContainer{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 300px;
+    gap: 10px;
+    margin-top: 10px;
+}
+.timeElement{
+    border-radius: 10px;
+    background-color: gray;
+    width: 50px;
+    height: 20px,
 }

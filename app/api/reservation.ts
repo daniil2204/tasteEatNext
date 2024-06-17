@@ -1,14 +1,18 @@
-import { IGetReservation, IReservationRow } from '@/types/reservation'
+import {
+  ICreateReservation,
+  IGetReservation,
+  resevationsInfo,
+} from '@/types/reservation'
 import api from '../../app/axiosInstance'
 
 export const getReservations = async ({
-  countOfQuests,
+  countOfGuests,
   reservationDate,
-}: IGetReservation): Promise<IReservationRow[]> => {
+}: IGetReservation): Promise<resevationsInfo[]> => {
   const { day, month, year } = reservationDate
   try {
     const { data } = await api.get(
-      `/reservation?count=${countOfQuests}&day=${day}&month=${month}&year=${year}`
+      `/reservation?count=${countOfGuests}&day=${day}&month=${month}&year=${year}`
     )
     return data
   } catch (err) {
@@ -16,9 +20,31 @@ export const getReservations = async ({
   }
 }
 
-export const makeReservation = async () => {
+export const makeReservation = async ({
+  bookHour,
+  day,
+  hourCount,
+  month,
+  tableId,
+  year,
+}: ICreateReservation) => {
   try {
-    const { data } = await api.post(`/reservation/create}`, {})
+    const token = localStorage.getItem('token')
+    console.log(token)
+    const { data } = await api.post(
+      `/reservation/create`,
+      {
+        bookHour,
+        day,
+        hourCount,
+        month,
+        tableId,
+        year,
+      },
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    )
     console.log(data)
   } catch (err) {
     return []

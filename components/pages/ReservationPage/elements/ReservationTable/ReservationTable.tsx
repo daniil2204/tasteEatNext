@@ -15,14 +15,17 @@ const ReservationTable = ({
       <p className={styles.reservationTitle}>Reservations</p>
       {!loading ? (
         freeTables.length > 0 ? (
-          freeTables.map((item) => (
-            <ReservationRow
-              countOfQuests={item.countOfQuests}
-              id={item.id}
-              key={item.id}
-              date={date}
-            />
-          ))
+          <div className={styles.tables}>
+            {freeTables.map((item) => (
+              <ReservationRow
+                countOfGuests={item.table.countOfGuests}
+                id={item.table.id}
+                key={item.table.id}
+                date={date}
+                freeHours={item.freeHours}
+              />
+            ))}
+          </div>
         ) : !error ? (
           <p className={styles.reservationWarning}>
             Select the date and number of guests

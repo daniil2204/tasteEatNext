@@ -3,11 +3,11 @@ import React, { useState } from 'react'
 import styles from './ReservationPage.module.scss'
 import ReservationTable from './elements/ReservationTable/ReservationTable'
 import ReservationSettings from './elements/ReservationSettings/ReservationSettings'
-import { IReservationRow, reservationTypeDate } from '@/types/reservation'
+import { reservationTypeDate, resevationsInfo } from '@/types/reservation'
 import { getReservations } from '@/app/api/reservation'
 
 const ReservationPage = () => {
-  const [freeTables, setFreeTables] = useState<IReservationRow[]>([])
+  const [freeTables, setFreeTables] = useState<resevationsInfo[]>([])
   const [reservationDate, setReservationDate] =
     useState<reservationTypeDate | null>(null)
   const [loading, setLoading] = useState(false)
@@ -18,7 +18,7 @@ const ReservationPage = () => {
     try {
       setLoading(true)
       const tables = await getReservations({
-        countOfQuests: count,
+        countOfGuests: count,
         reservationDate: date,
       })
       if (tables.length === 0) {
