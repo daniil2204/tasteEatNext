@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import styles from './ReservationRow.module.scss'
 import { ICreateReservation, IReservationRow } from '@/types/reservation'
 import { makeReservation } from '@/app/api/reservation'
+import { useRouter } from 'next/navigation'
 
 const ReservationRow = ({
   id,
@@ -11,7 +12,9 @@ const ReservationRow = ({
   freeHours,
 }: IReservationRow) => {
   const [selectedTime, setSelectedTime] = useState<number>()
-  const [hourCount, setHourCount] = useState<number>()
+  const [hourCount, setHourCount] = useState<number>(1)
+  const [error, setError] = useState('')
+  const redirect = useRouter()
 
   const createReservation = async () => {
     if (date && selectedTime && hourCount) {
@@ -23,7 +26,14 @@ const ReservationRow = ({
         year: date?.year,
         tableId: id,
       }
-      const test = await makeReservation(reservation)
+      const responce = await makeReservation(reservation)
+      if (responce) {
+        redirect.push(`/reservation/${responce.id}`)
+      } else {
+        setError('Sorry there was an error, try again later')
+      }
+    } else {
+      selectedTime ? null : setError('Select time')
     }
   }
 
@@ -49,7 +59,7 @@ const ReservationRow = ({
           </p>
         ))}
       </div>
-      <div className={styles.reservationBtn}>
+      <div className={styles.reservationTimeCount}>
         <p>Select booking time</p>
         <select onChange={(e) => setHourCount(+e.target.value)}>
           {[1, 2, 3].map((item) => (
@@ -65,6 +75,7 @@ const ReservationRow = ({
           Book
         </button>
       </div>
+      <p className={styles.error}>{error}</p>
     </div>
   )
 }

@@ -1,10 +1,8 @@
+@import '../../../../../styles/variables.scss';
+
 .reservationTable{
     text-align: center;
     margin-top: 15px;
-}
-.reservationTitle{
-    color: white;
-    font-size: 24px;
 }
 .reservationWarning{
     margin-top: 10px;
@@ -12,11 +10,26 @@
     font-size: 16px;
 }
 
-.tables{
+.table{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
     grid-column-gap: 50px;
     grid-row-gap: 20px;
 
+}
+
+.arrows{
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 15px;
+}
+
+.arrow{
+    width: 50px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: $btn_color;
+    font-size: 16px;
 }

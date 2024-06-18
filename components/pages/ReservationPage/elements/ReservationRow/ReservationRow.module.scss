@@ -1,3 +1,5 @@
+@import '../../../../../styles/variables.scss';
+
 .reservation{
     margin-top: 20px;
     color: white;
@@ -21,7 +23,22 @@
     padding: 2px;
 }
 
-.reservationBtn{
+.timeContainer{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+
+    max-width: 300px;
+    gap: 10px;
+    margin-top: 10px;
+}
+.timeElement{
+    border-radius: 10px;
+    background-color: gray;
+    width: 50px;
+    height: 20px,
+}
+
+.reservationTimeCount{
     margin-top: 15px;
     display: flex;
     justify-content: space-between;
@@ -34,7 +51,7 @@
 }
 
 .reservation__button {
-    background: #E1B168;
+    background: $btn_color;
     text-align: center;
     color: #292E36;
     font-family: Josefin Sans;
@@ -42,17 +59,8 @@
     padding: 10px;
 }
 
-.timeContainer{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    max-width: 300px;
-    gap: 10px;
+.error{
     margin-top: 10px;
-}
-.timeElement{
-    border-radius: 10px;
-    background-color: gray;
-    width: 50px;
-    height: 20px,
+    color: red;
+    text-align: left;
 }

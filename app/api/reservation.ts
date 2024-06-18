@@ -2,6 +2,7 @@ import {
   ICreateReservation,
   IGetReservation,
   resevationsInfo,
+  IGetReservationById,
 } from '@/types/reservation'
 import api from '../../app/axiosInstance'
 
@@ -27,10 +28,9 @@ export const makeReservation = async ({
   month,
   tableId,
   year,
-}: ICreateReservation) => {
+}: ICreateReservation): Promise<IGetReservationById | false> => {
   try {
     const token = localStorage.getItem('token')
-    console.log(token)
     const { data } = await api.post(
       `/reservation/create`,
       {
@@ -45,8 +45,22 @@ export const makeReservation = async ({
         headers: { Authorization: `Bearer ${token}` },
       }
     )
-    console.log(data)
+    return data
   } catch (err) {
-    return []
+    return false
+  }
+}
+
+export const getReservationById = async (
+  reservationId: number
+): Promise<IGetReservationById | false> => {
+  try {
+    const token = localStorage.getItem('token')
+    const { data } = await api.get(`/reservation/${reservationId}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    return data
+  } catch (err) {
+    return false
   }
 }

@@ -12,19 +12,24 @@ const ReservationTable = ({
 }: IReservatioTable) => {
   return (
     <div className={styles.reservationTable}>
-      <p className={styles.reservationTitle}>Reservations</p>
       {!loading ? (
         freeTables.length > 0 ? (
-          <div className={styles.tables}>
-            {freeTables.map((item) => (
-              <ReservationRow
-                countOfGuests={item.table.countOfGuests}
-                id={item.table.id}
-                key={item.table.id}
-                date={date}
-                freeHours={item.freeHours}
-              />
-            ))}
+          <div>
+            <div className={styles.table}>
+              {freeTables.map((item) => (
+                <ReservationRow
+                  countOfGuests={item.table.countOfGuests}
+                  id={item.table.id}
+                  key={item.table.id}
+                  date={date}
+                  freeHours={item.freeHours}
+                />
+              ))}
+            </div>
+            <div className={styles.arrows}>
+              <button className={styles.arrow}>{`<`}</button>
+              <button className={styles.arrow}>{`>`}</button>
+            </div>
           </div>
         ) : !error ? (
           <p className={styles.reservationWarning}>

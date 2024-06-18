@@ -36,3 +36,14 @@ export interface ICreateReservation {
   month: number
   year: number
 }
+
+export interface IGetReservationById {
+  id: number
+  tableId: number
+  bookHour: number
+  hourCount: number
+  userId: number
+  day: number
+  month: number
+  year: number
+}

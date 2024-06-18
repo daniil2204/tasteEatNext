@@ -45,7 +45,6 @@ const ReservationSettings = ({
 
   return (
     <>
-      <p className={styles.title}>Reservation</p>
       <p className={styles.mainText}>Book Your Table</p>
       <div className={styles.settings}>
         <div className={styles.date}>
