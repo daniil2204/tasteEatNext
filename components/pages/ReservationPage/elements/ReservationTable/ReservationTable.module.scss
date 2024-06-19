@@ -13,7 +13,6 @@
 .table{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
     grid-column-gap: 50px;
     grid-row-gap: 20px;
 
@@ -32,4 +31,11 @@
     border-radius: 15px;
     background-color: $btn_color;
     font-size: 16px;
+}
+
+
+@media(max-width:700px){
+    .table{
+        grid-template-columns: repeat(1, 1fr);
+    }
 }

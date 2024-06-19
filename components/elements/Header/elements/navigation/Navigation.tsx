@@ -13,24 +13,21 @@ const Navigation = () => {
   return (
     <nav className={styles.nav}>
       {is600 && <SideBar isOpen={isOpen} setIsOpen={setIsOpen} />}
-      {!is600 ? (
-        <ul className={styles.navList}>
-          {navList.map((link) => (
-            <li className={styles.navList__text} key={link.title}>
-              <Link href={link.href}>{link.title}</Link>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <Image
-          className={styles.white}
-          src={'/assets/img/menu.svg'}
-          alt="menu"
-          width={24}
-          height={24}
-          onClick={() => setIsOpen(!isOpen)}
-        />
-      )}
+      <ul className={styles.navList}>
+        {navList.map((link) => (
+          <li className={styles.navList__text} key={link.title}>
+            <Link href={link.href}>{link.title}</Link>
+          </li>
+        ))}
+      </ul>
+      <Image
+        className={styles.white}
+        src={'/assets/img/menu.svg'}
+        alt="menu"
+        width={24}
+        height={24}
+        onClick={() => setIsOpen(!isOpen)}
+      />
       <div className={styles.logos}>
         {logos.map((logo) => (
           <Link

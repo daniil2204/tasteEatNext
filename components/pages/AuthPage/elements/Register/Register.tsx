@@ -11,6 +11,7 @@ import { useRouter } from 'next/navigation'
 import { toast } from 'react-toastify'
 import { useAppContext } from '@/context/user'
 import { useMutation } from '@tanstack/react-query'
+import axios from 'axios'
 
 const Register = () => {
   const { setUser } = useAppContext()
@@ -28,8 +29,14 @@ const Register = () => {
       toast.success(`Register was successful`, { position: 'bottom-right' })
       router.push('/')
     },
-    onError() {
-      toast.error('Fields values are wrong', { position: 'bottom-right' })
+    onError(err) {
+      console.log(err)
+      if (axios.isAxiosError(err)) {
+        err.response?.data.message.forEach((item: string) => {
+          console.log(item)
+          toast.error(item, { position: 'bottom-right' })
+        })
+      }
     },
   })
   const router = useRouter()
@@ -41,20 +48,6 @@ const Register = () => {
   const onSubmit = async (data: RegisterInterface) => {
     const { email, name, password, phone } = data
     mutate({ email, password, name, phone })
-    // try {
-    //   const { email, name, password, phone } = data
-    //   const user = await signUp({ password, phone, name, email })
-    //   setUser({
-    //     email: user.email,
-    //     phone: user.phone,
-    //     name: user.name,
-    //     id: user.id,
-    //   })
-    //   toast.success(`Register was successful`, { position: 'bottom-right' })
-    //   router.push('/')
-    // } catch (error) {
-    //   toast.error('Email or password are wrong', { position: 'bottom-right' })
-    // }
   }
   return (
     <form className={formStyle.authForm} onSubmit={handleSubmit(onSubmit)}>

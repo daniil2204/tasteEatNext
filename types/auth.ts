@@ -20,10 +20,10 @@ export interface InputValueTypeInterface {
     value: RegExp
     message: string
   }
-  minLength: number
-  minLengthMsg: string
-  maxLength: number
-  maxLengthMsg: string
+  minLength?: number
+  minLengthMsg?: string
+  maxLength?: number
+  maxLengthMsg?: string
 }
 
 export type InputType = {

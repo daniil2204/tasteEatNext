@@ -119,10 +119,10 @@ export const inputsRegisterValue: InputValueTypeInterface[] = [
     placeholder: 'Name',
     pattern: {
       value: /^[a-zA-Z]+$/,
-      message: 'He;;p',
+      message: 'hgfh',
     },
     minLength: 4,
-    minLengthMsg: 'Enter more than 5 characters',
+    minLengthMsg: 'Enter more than 3 characters',
     maxLength: 15,
     maxLengthMsg: 'Enter less than 15 characters',
   },
@@ -130,8 +130,8 @@ export const inputsRegisterValue: InputValueTypeInterface[] = [
     type: 'password',
     required: 'Password is required',
     placeholder: 'Password',
-    minLength: 4,
-    minLengthMsg: 'Enter more than 4 characters',
+    minLength: 8,
+    minLengthMsg: 'Enter more than 8 characters',
     maxLength: 15,
     maxLengthMsg: 'Enter less than 15 characters',
   },
@@ -139,10 +139,10 @@ export const inputsRegisterValue: InputValueTypeInterface[] = [
     type: 'phone',
     required: 'Phone is required',
     placeholder: 'Phone',
-    minLength: 4,
-    minLengthMsg: 'Enter more than 4 characters',
-    maxLength: 15,
-    maxLengthMsg: 'Enter less than 15 characters',
+    pattern: {
+      value: /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/,
+      message: 'Phone is not valid',
+    },
   },
 ]
 

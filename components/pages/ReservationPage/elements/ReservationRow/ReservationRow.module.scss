@@ -26,7 +26,6 @@
 .timeContainer{
     display: grid;
     grid-template-columns: repeat(5,1fr);
-
     max-width: 300px;
     gap: 10px;
     margin-top: 10px;
@@ -64,3 +63,9 @@
     color: red;
     text-align: left;
 }
+
+// @media(max-width:700px){
+//     .timeContainer{
+//         grid-template-columns: repeat(5,1fr);
+//     }
+// }

@@ -37,13 +37,13 @@
     filter: invert(100%) sepia(0%) saturate(1498%) hue-rotate(319deg) brightness(122%) contrast(100%);
 }
 
-@media(max-width:1045px){
+@media(max-width:1105px){
     .navList{
         gap: 40px;
     }
 }
 
-@media(max-width:900px){
+@media(max-width:980px){
     .navList{
         gap: 20px;
         &__text{
@@ -58,5 +58,15 @@
         &__text{
             font-size: 14px;
         }
+    }
+}
+@media(max-width:600px){
+    .navList{
+        display: none;
+    }
+}
+@media(min-width:600px){
+    .white{
+        display: none;
     }
 }

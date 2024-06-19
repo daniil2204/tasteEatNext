@@ -8,7 +8,7 @@ import { useRedirect } from '@/hooks/useRedirect'
 import Link from 'next/link'
 
 const AuthPage = () => {
-  const { shouldLoadContent } = useRedirect(false)
+  const { shouldLoadContent } = useRedirect('auth')
   const searchParams = useSearchParams()
   const search = searchParams.get('component')
   return (

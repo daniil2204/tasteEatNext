@@ -26,10 +26,12 @@ const ReservationTable = ({
                 />
               ))}
             </div>
-            <div className={styles.arrows}>
-              <button className={styles.arrow}>{`<`}</button>
-              <button className={styles.arrow}>{`>`}</button>
-            </div>
+            {freeTables.length > 4 ? (
+              <div className={styles.arrows}>
+                <button className={styles.arrow}>{`<`}</button>
+                <button className={styles.arrow}>{`>`}</button>
+              </div>
+            ) : null}
           </div>
         ) : !error ? (
           <p className={styles.reservationWarning}>

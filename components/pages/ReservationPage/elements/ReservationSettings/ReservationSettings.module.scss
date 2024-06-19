@@ -37,3 +37,12 @@
     font-family: Josefin Sans;
     margin-top: 15px;
 }
+
+@media(max-width:400px){
+    .settings{
+        display: block;
+        &__text{
+            margin-top: 10px;
+        }
+    }
+}

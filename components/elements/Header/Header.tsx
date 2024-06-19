@@ -83,7 +83,6 @@ const Header = () => {
           />
         </button>
       </div>
-      <p className={styles.line} />
       <Navigation />
     </header>
   )

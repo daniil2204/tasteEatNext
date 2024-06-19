@@ -5,7 +5,6 @@ import { briefInfoInterface } from '@/types/about'
 import { briefInfoArray } from '@/utils/additionalLists'
 
 const createBriefInfo = (briefInfo: briefInfoInterface[]) => {
-  console.log('hello')
   return (
     <>
       {briefInfo.map((info) => (
@@ -32,7 +31,6 @@ const createBriefInfo = (briefInfo: briefInfoInterface[]) => {
 }
 
 const AboutPage = () => {
-  console.log('server')
   return (
     <section about="About Page" className={styles.aboutPage}>
       <div className={styles.briefInfoContainer}>
