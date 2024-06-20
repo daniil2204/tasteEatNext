@@ -3,7 +3,6 @@ import Blog from './elements/Blog/Blog'
 import styles from './BlogPage.module.scss'
 
 const BlogPage = () => {
-  console.log('')
   return (
     <section about="BlogPage" className={styles.blogPage}>
       <div className={styles.header}>

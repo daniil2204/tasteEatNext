@@ -7,7 +7,7 @@ export interface UserInterface {
   phone: string
   bucket?: Bucket[]
   token?: string
-  reservation: IGetReservationById[]
+  reservation?: IGetReservationById[]
 }
 
 export interface Bucket {
@@ -20,7 +20,7 @@ export interface Bucket {
 
 export type ContextType = {
   user: UserInterface | null
-  setUser: (user: UserInterface) => void
+  setUser: (user: UserInterface | null) => void
 }
 
 export type UserKeys = keyof UserInterface

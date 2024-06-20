@@ -3,7 +3,6 @@ import styles from './Blog.module.scss'
 import Image from 'next/image'
 
 const Blog = () => {
-  console.log('')
   return (
     <div className={styles.blog}>
       <div className={styles.imgContainer}>

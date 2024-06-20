@@ -8,11 +8,11 @@ import { useMediaQuery } from '@/hooks/useMediaQuery'
 import { logos, navList } from '@/utils/additionalLists'
 
 const Navigation = () => {
-  const is600 = useMediaQuery(600)
+  const is650 = useMediaQuery(650)
   const [isOpen, setIsOpen] = useState(false)
   return (
     <nav className={styles.nav}>
-      {is600 && <SideBar isOpen={isOpen} setIsOpen={setIsOpen} />}
+      {is650 && <SideBar isOpen={isOpen} setIsOpen={setIsOpen} />}
       <ul className={styles.navList}>
         {navList.map((link) => (
           <li className={styles.navList__text} key={link.title}>

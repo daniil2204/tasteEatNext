@@ -31,6 +31,9 @@ export const makeReservation = async ({
 }: ICreateReservation): Promise<IGetReservationById | false> => {
   try {
     const token = localStorage.getItem('token')
+    if (!token) {
+      return false
+    }
     const { data } = await api.post(
       `/reservation/create`,
       {
@@ -56,11 +59,29 @@ export const getReservationById = async (
 ): Promise<IGetReservationById | false> => {
   try {
     const token = localStorage.getItem('token')
+    if (!token) {
+      return false
+    }
     const { data } = await api.get(`/reservation/${reservationId}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
     return data
   } catch (err) {
     return false
+  }
+}
+
+export const getUserReservations = async () => {
+  const token = localStorage.getItem('token')
+  if (!token) {
+    return false
+  }
+  try {
+    const { data } = await api.get(`/reservation/userReservations`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    return data
+  } catch (err) {
+    return []
   }
 }
