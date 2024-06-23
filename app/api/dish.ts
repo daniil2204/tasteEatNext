@@ -1,6 +1,6 @@
 import { IGetDishes } from '@/types/getDishes'
 import api from '../../app/axiosInstance'
-import { DishInterface } from '@/types/dishCard'
+import { IAddDishToBucket, DishInterface } from '@/types/dishCard'
 import {
   typeOfFoodTitle,
   dishSliderInterface,
@@ -46,4 +46,18 @@ export function getDishesAndType(): Promise<dishesAndCategory[]> {
     }
     return data
   })
+}
+
+export async function getDishById(
+  dishId: number | null
+): Promise<IAddDishToBucket> {
+  if (!dishId) {
+    throw new Error('Not founded')
+  }
+  try {
+    const { data } = await api.get(`/dish/${dishId}`)
+    return data
+  } catch (err) {
+    throw new Error('Not founded')
+  }
 }

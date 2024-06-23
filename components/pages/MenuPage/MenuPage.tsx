@@ -2,10 +2,15 @@ import React from 'react'
 import styles from './MenuPage.module.scss'
 import List from './elements/List/List'
 import MenuSlider from './elements/MenuSlider/MenuSlider'
+import Modal from '@/components/elements/Modal/Modal'
+import AddDishModal from './elements/AddDishModal/AddDishModal'
 
 const MenuPage = () => {
   return (
     <section about="Menu Page" className={styles.menuPage}>
+      <Modal>
+        <AddDishModal />
+      </Modal>
       <div className={styles.menu}>
         <p className={`${styles.text} ${styles.title}`}>Menu</p>
         <MenuSlider />

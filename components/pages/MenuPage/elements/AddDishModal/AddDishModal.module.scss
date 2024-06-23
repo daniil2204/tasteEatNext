@@ -1,0 +1,29 @@
+@import '../../../../../styles/variables.scss';
+
+.modal{
+    width: 400px;
+    height: 500px;
+    border-radius: 10px;
+    border: 1px solid gray;
+    z-index: 100;
+    background-color: $about_bg_color;
+    padding: 10px;
+    font-family: Josefin Sans;
+}
+
+.title{
+    font-size: 24px;
+    margin-top: 10px;
+}
+.details{
+    margin-top: 10px;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.countContainer{
+    display: flex;
+    justify-content: space-around;
+    width: 100px;
+    margin: 20px auto;
+}

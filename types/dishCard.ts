@@ -11,3 +11,8 @@ export interface DishInterface {
   description: string
   discount: number
 }
+
+export interface IAddDishToBucket extends DishInterface {
+  ingredients: string[]
+  weight: string
+}
