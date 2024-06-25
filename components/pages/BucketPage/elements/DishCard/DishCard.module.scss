@@ -1,0 +1,12 @@
+.dishContainer{ 
+    margin: 50px;
+    border-bottom: 1px solid gray;
+    text-align: center;
+    width: 500px;
+}
+
+.info{
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+}

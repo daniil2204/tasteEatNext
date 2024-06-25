@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import styles from './ReservationRow.module.scss'
 import { ICreateReservation, IReservationRow } from '@/types/reservation'
 import { makeReservation } from '@/app/api/reservation'
-import { useRouter } from 'next/navigation'
+import { toast } from 'react-toastify'
 
 const ReservationRow = ({
   id,
@@ -14,7 +14,6 @@ const ReservationRow = ({
   const [selectedTime, setSelectedTime] = useState<number>()
   const [hourCount, setHourCount] = useState<number>(1)
   const [error, setError] = useState('')
-  const redirect = useRouter()
 
   const createReservation = async () => {
     if (date && selectedTime && hourCount) {
@@ -28,7 +27,7 @@ const ReservationRow = ({
       }
       const responce = await makeReservation(reservation)
       if (responce) {
-        redirect.push(`/reservation/${responce.id}`)
+        toast.success('Reservation was success', { position: 'bottom-right' })
       } else {
         setError('Sorry there was an error, try again later')
       }
@@ -47,7 +46,7 @@ const ReservationRow = ({
       </div>
       <div className={styles.timeContainer}>
         {freeHours.map((item) => (
-          <p
+          <button
             key={item}
             onClick={() => setSelectedTime(item)}
             className={styles.timeElement}
@@ -56,7 +55,7 @@ const ReservationRow = ({
             }}
           >
             {item}
-          </p>
+          </button>
         ))}
       </div>
       <div className={styles.reservationTimeCount}>

@@ -1,0 +1,17 @@
+@import '../../../styles/variables.scss';
+
+.countBtn{
+    width: 50px;
+    height: 50px;
+    background-color: $btn_color;
+    font-size: 32px;
+    text-align: center;
+}
+
+@media (max-width:565px) {
+    .countBtn{
+        width: 25px;
+        height: 25px;
+        font-size: 16px;
+    }
+}

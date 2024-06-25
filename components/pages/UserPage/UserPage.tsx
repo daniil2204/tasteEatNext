@@ -19,7 +19,7 @@ const UserPage = () => {
 
   const setUserReservations = async () => {
     const userReservations = await getUserReservations()
-    setReservations(userReservations.reservation)
+    setReservations(userReservations.reservation.reverse())
   }
 
   const logOut = () => {

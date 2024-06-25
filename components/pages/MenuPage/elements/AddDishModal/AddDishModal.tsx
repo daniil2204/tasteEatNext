@@ -9,6 +9,7 @@ import Spinner from '@/components/elements/Spinner/Spinner'
 import { useAppContext } from '@/context/user'
 import { addDishToBucket } from '@/app/api/bucket'
 import { toast } from 'react-toastify'
+import ChangeCountBtn from '@/components/elements/ChangeCountBtn/ChangeCountBtn'
 
 const AddDishModal: React.FC = () => {
   const searchParams = useSearchParams()
@@ -41,12 +42,12 @@ const AddDishModal: React.FC = () => {
     if (user) {
       try {
         await addDishToBucket({ count, dishId: +dishId })
-        toast.success('Dish was added to bucket')
+        toast.success('Dish was added to bucket', { position: 'bottom-right' })
       } catch (err) {
-        toast.error('Sorry, try it later')
+        toast.error('Sorry, try it later', { position: 'bottom-right' })
       }
     } else {
-      toast.error('Please login or register')
+      toast.error('Please login or register', { position: 'bottom-right' })
     }
   }
 
@@ -73,19 +74,9 @@ const AddDishModal: React.FC = () => {
           <p className={styles.details}>Description - {data.description}</p>
           <p className={styles.details}>Weight - {data.weight}g</p>
           <div className={styles.countContainer}>
-            <button
-              onClick={() => changeCount('-')}
-              className={styles.countBtn}
-            >
-              -
-            </button>
+            <ChangeCountBtn func={() => changeCount('-')} text="-" />
             <p style={{ fontSize: 32 }}>{count}</p>
-            <button
-              onClick={() => changeCount('+')}
-              className={styles.countBtn}
-            >
-              +
-            </button>
+            <ChangeCountBtn func={() => changeCount('+')} text="+" />
           </div>
           <button onClick={addDish} className={styles.addBtn}>
             Add
