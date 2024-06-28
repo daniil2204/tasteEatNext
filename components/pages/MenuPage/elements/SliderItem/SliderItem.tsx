@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import { sliderType } from '@/types/slider'
 import styles from './SliderItem.module.scss'

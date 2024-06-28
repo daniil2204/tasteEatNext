@@ -15,7 +15,7 @@ const DishCard = ({
   return (
     <div key={id} className={styles.dishContainer}>
       <div className={styles.dishImg}>
-        <Image src={images[0].url} alt="Dish Image" fill />
+        <Image src={images ? images[0].url : ''} alt="Dish Image" fill />
       </div>
       <div className={styles.titleAndPrice}>
         <p className={`${styles.text} ${styles.dishTitle}`}>{title}</p>
