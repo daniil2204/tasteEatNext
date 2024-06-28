@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './DishCard.module.scss'
+import styles from './DishCardMenu.module.scss'
 import Image from 'next/image'
 import { DishInterface } from '@/types/dishCard'
 import { getPrice } from '@/utils/getPrice'
