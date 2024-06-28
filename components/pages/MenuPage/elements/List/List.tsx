@@ -3,7 +3,7 @@ import React from 'react'
 import { useState } from 'react'
 import { getDishes } from '@/app/api/dish'
 import { DishInterface } from '@/types/dishCard'
-import DishCard from '../DishCard/DishCard'
+import DishCardMenu from '../DishCard/DishCard'
 import styles from './List.module.scss'
 import Spinner from '@/components/elements/Spinner/Spinner'
 import { useQuery } from '@tanstack/react-query'
@@ -20,7 +20,7 @@ const List = () => {
       <div className={styles.menuGrid}>
         {!isLoading &&
           dishes.map((dish) => (
-            <DishCard
+            <DishCardMenu
               key={dish.id}
               id={dish.id}
               description={dish.description}

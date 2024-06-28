@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { DishInterface } from '@/types/dishCard'
 import { getPrice } from '@/utils/getPrice'
 
-const DishCard = ({
+const DishCardMenu = ({
   id,
   description,
   images,
@@ -32,4 +32,4 @@ const DishCard = ({
   )
 }
 
-export default DishCard
+export default DishCardMenu
