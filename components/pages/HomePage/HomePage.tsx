@@ -21,7 +21,7 @@ const HomePage = () => {
         </Link>
       </div>
       <div className={styles.imgContainer}>
-        <Image priority fill alt="veranda" src={'/assets/img/HomePage.svg'} />
+        <Image priority fill alt="veranda" src={'/assets/img/homePage.svg'} />
       </div>
     </section>
   )
