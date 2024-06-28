@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './BucketPage.module.scss'
-import DishCard from './elements/DishCard/DishCard'
+import DishCard from './elements/DishCard/DishCardBucket'
 
 const BucketPage = () => {
   return (
