@@ -27,7 +27,10 @@ export interface InputValueTypeInterface {
 }
 
 export type InputType = {
-  register: UseFormRegister<RegisterInterface> | UseFormRegister<LoginInterface>
-  errors: FieldErrors<RegisterInterface>
+  register:
+    | UseFormRegister<RegisterInterface>
+    | UseFormRegister<LoginInterface>
+    | any
+  errors: FieldErrors<RegisterInterface> | FieldErrors<LoginInterface>
   inputValue: InputValueTypeInterface
 }

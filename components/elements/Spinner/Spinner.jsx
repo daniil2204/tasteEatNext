@@ -19,7 +19,7 @@ const Spinner = () => {
               keyTimes="0;1"
               dur="1s"
               repeatCount="indefinite"
-            ></animateTransform>
+            />
             <animate
               attributeName="fillOpacity"
               keyTimes="0;1"
@@ -27,7 +27,7 @@ const Spinner = () => {
               repeatCount="indefinite"
               values="1;0"
               begin="-0.875s"
-            ></animate>
+            />
           </circle>
         </g>
       </g>
@@ -42,7 +42,7 @@ const Spinner = () => {
               keyTimes="0;1"
               dur="1s"
               repeatCount="indefinite"
-            ></animateTransform>
+            />
             <animate
               attributeName="fillOpacity"
               keyTimes="0;1"
@@ -50,7 +50,7 @@ const Spinner = () => {
               repeatCount="indefinite"
               values="1;0"
               begin="-0.75s"
-            ></animate>
+            />
           </circle>
         </g>
       </g>
@@ -65,7 +65,7 @@ const Spinner = () => {
               keyTimes="0;1"
               dur="1s"
               repeatCount="indefinite"
-            ></animateTransform>
+            />
             <animate
               attributeName="fillOpacity"
               keyTimes="0;1"
@@ -73,7 +73,7 @@ const Spinner = () => {
               repeatCount="indefinite"
               values="1;0"
               begin="-0.625s"
-            ></animate>
+            />
           </circle>
         </g>
       </g>
@@ -88,7 +88,7 @@ const Spinner = () => {
               keyTimes="0;1"
               dur="1s"
               repeatCount="indefinite"
-            ></animateTransform>
+            />
             <animate
               attributeName="fillOpacity"
               keyTimes="0;1"
@@ -96,7 +96,7 @@ const Spinner = () => {
               repeatCount="indefinite"
               values="1;0"
               begin="-0.5s"
-            ></animate>
+            />
           </circle>
         </g>
       </g>
@@ -111,7 +111,7 @@ const Spinner = () => {
               keyTimes="0;1"
               dur="1s"
               repeatCount="indefinite"
-            ></animateTransform>
+            />
             <animate
               attributeName="fillOpacity"
               keyTimes="0;1"
@@ -119,7 +119,7 @@ const Spinner = () => {
               repeatCount="indefinite"
               values="1;0"
               begin="-0.375s"
-            ></animate>
+            />
           </circle>
         </g>
       </g>
@@ -134,7 +134,7 @@ const Spinner = () => {
               keyTimes="0;1"
               dur="1s"
               repeatCount="indefinite"
-            ></animateTransform>
+            />
             <animate
               attributeName="fillOpacity"
               keyTimes="0;1"
@@ -142,7 +142,7 @@ const Spinner = () => {
               repeatCount="indefinite"
               values="1;0"
               begin="-0.25s"
-            ></animate>
+            />
           </circle>
         </g>
       </g>
@@ -157,7 +157,7 @@ const Spinner = () => {
               keyTimes="0;1"
               dur="1s"
               repeatCount="indefinite"
-            ></animateTransform>
+            />
             <animate
               attributeName="fillOpacity"
               keyTimes="0;1"
@@ -165,7 +165,7 @@ const Spinner = () => {
               repeatCount="indefinite"
               values="1;0"
               begin="-0.125s"
-            ></animate>
+            />
           </circle>
         </g>
       </g>
@@ -180,7 +180,7 @@ const Spinner = () => {
               keyTimes="0;1"
               dur="1s"
               repeatCount="indefinite"
-            ></animateTransform>
+            />
             <animate
               attributeName="fillOpacity"
               keyTimes="0;1"
@@ -188,7 +188,7 @@ const Spinner = () => {
               repeatCount="indefinite"
               values="1;0"
               begin="0s"
-            ></animate>
+            />
           </circle>
         </g>
       </g>
