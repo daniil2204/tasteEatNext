@@ -52,7 +52,7 @@ export const getMe = async () => {
       }
       return data
     } catch (err) {
-      localStorage.removeItem('token')
+      throw new Error('token is not correct')
     }
   }
 }

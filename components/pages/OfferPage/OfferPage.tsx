@@ -8,6 +8,7 @@ import { bannerInterface } from '@/types/offer'
 
 const OfferPage = async () => {
   const dishes = await getDishes({ discount: true })
+  console.log(dishes)
   const evenObj: bannerInterface = {
     bgSrc: '/assets/img/BlueBgDiscount.svg',
     cloud: '/assets/img/whiteCloud.svg',
@@ -18,7 +19,6 @@ const OfferPage = async () => {
     cloud: '/assets/img/blackCloud.svg',
     textColor: 'white',
   }
-
   return (
     <section about="Offer Page">
       <div className={styles.whatWeOffer}>

@@ -14,6 +14,7 @@ export async function getDishes({
   likes,
   type,
 }: IGetDishes): Promise<DishInterface[]> {
+  console.log(discount)
   try {
     const { data } = await api.get(
       `/dish?${offset ? `offset=${offset}` : ''}${likes ? '&likes=true' : ''}${
