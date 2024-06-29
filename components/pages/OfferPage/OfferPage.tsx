@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import styles from './OfferPage.module.scss'
 import OfferBanner from './elements/OfferBanner/OfferBanner'
@@ -5,10 +6,16 @@ import DiscountBanner from './elements/DiscountsBanner/DiscountBanner'
 import { whatWeOfferBanners } from '@/utils/additionalLists'
 import { getDishes } from '@/app/api/dish'
 import { bannerInterface } from '@/types/offer'
+import { useQuery } from '@tanstack/react-query'
+import Spinner from '@/components/elements/Spinner/Spinner'
+import { useRouter } from 'next/navigation'
 
-const OfferPage = async () => {
-  const dishes = await getDishes({ discount: true })
-  console.log(dishes)
+const OfferPage = () => {
+  const router = useRouter()
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ['offerDishes'],
+    queryFn: async () => await getDishes({ discount: true }),
+  })
   const evenObj: bannerInterface = {
     bgSrc: '/assets/img/BlueBgDiscount.svg',
     cloud: '/assets/img/whiteCloud.svg',
@@ -18,6 +25,9 @@ const OfferPage = async () => {
     bgSrc: '/assets/img/GrayBgDiscount.svg',
     cloud: '/assets/img/blackCloud.svg',
     textColor: 'white',
+  }
+  if (isError) {
+    router.push('/')
   }
   return (
     <section about="Offer Page">
@@ -41,14 +51,16 @@ const OfferPage = async () => {
           ))}
         </div>
       </div>
+      {isLoading && <Spinner />}
       <div className={styles.offerDiscounts}>
-        {dishes.map((dish, index) => (
-          <DiscountBanner
-            key={dish.id}
-            bannerStyles={index % 2 === 0 ? evenObj : oddObj}
-            dish={dish}
-          />
-        ))}
+        {data &&
+          data.map((dish, index) => (
+            <DiscountBanner
+              key={dish.id}
+              bannerStyles={index % 2 === 0 ? evenObj : oddObj}
+              dish={dish}
+            />
+          ))}
       </div>
     </section>
   )

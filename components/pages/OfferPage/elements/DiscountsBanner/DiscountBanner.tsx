@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import { discountBannerInterface } from '@/types/offer'
 import Image from 'next/image'

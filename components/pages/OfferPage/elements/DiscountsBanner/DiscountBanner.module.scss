@@ -99,6 +99,14 @@
 }
 
 @media(max-width:680px){
+    .imgCloudContainer{
+        &__price{
+            font-size: 35px
+        }
+    }
+    .offerText{
+        display: none;
+    }
     .discount{
         width: 450px;
     }
@@ -114,27 +122,23 @@
     }
     .left{
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        order: 2;
     }
-    .offerText{
-        display: none;
-    }
+    
     .right{
         display: flex;
         justify-content: center;
+        order: 1;
     }
     .imgPhotoContainer{
-        margin: 0;
-        width: 200px;
-        height: 150px;
+        margin: 20px;
+        width: 220px;
+        height: 170px;
     }
 }
 
-@media(max-width:440px){
-    .left{
-        flex-direction: column;
-        align-items: center;
-        padding: 0;
-    }
-    
-}
+
