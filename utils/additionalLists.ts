@@ -72,7 +72,7 @@ export const briefInfoArray: briefInfoInterface[] = [
   },
   {
     alt: 'Reservation',
-    src: '/assets/img/Reservation.svg',
+    src: '/assets/img/reservation.svg',
     text: 'restaurantate@gmail.com',
     title: 'Reservation',
   },
