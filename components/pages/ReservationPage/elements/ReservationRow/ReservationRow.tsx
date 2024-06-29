@@ -1,9 +1,18 @@
 'use client'
 import React, { useState } from 'react'
 import styles from './ReservationRow.module.scss'
-import { ICreateReservation, IReservationRow } from '@/types/reservation'
+import {
+  ICreateReservation,
+  IGetReservationById,
+  IReservationRow,
+} from '@/types/reservation'
 import { makeReservation } from '@/app/api/reservation'
 import { toast } from 'react-toastify'
+import {
+  UseMutationResult,
+  useMutation,
+  useQueryClient,
+} from '@tanstack/react-query'
 
 const ReservationRow = ({
   id,
@@ -25,16 +34,28 @@ const ReservationRow = ({
         year: date?.year,
         tableId: id,
       }
-      const responce = await makeReservation(reservation)
-      if (responce) {
-        toast.success('Reservation was success', { position: 'bottom-right' })
-      } else {
-        setError('Sorry there was an error, try again later')
-      }
+      mutation.mutate(reservation)
     } else {
       selectedTime ? null : setError('Select time')
     }
   }
+  const queryClient = useQueryClient()
+  const mutation: UseMutationResult<
+    IGetReservationById | false,
+    Error,
+    ICreateReservation
+  > = useMutation({
+    mutationFn: async (reservation: ICreateReservation) =>
+      await makeReservation(reservation),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['userReservations'] })
+      toast.success('Reservation was success', { position: 'bottom-right' })
+    },
+    onError: () => {
+      setError('Sorry there was an error, try again later')
+    },
+  })
+  console.log(mutation)
 
   return (
     <div className={styles.reservation}>

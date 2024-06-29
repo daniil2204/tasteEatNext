@@ -1,26 +1,20 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import styles from './UserPage.module.scss'
 import { useAppContext } from '@/context/user'
 import { useRedirect } from '@/hooks/useRedirect'
 import { useRouter } from 'next/navigation'
-import { IGetReservationById } from '@/types/reservation'
 import { getUserReservations } from '@/app/api/reservation'
+import { useQuery } from '@tanstack/react-query'
 
 const UserPage = () => {
   const { user, setUser } = useAppContext()
   const { shouldLoadContent } = useRedirect('user')
-  const [reservations, setReservations] = useState<IGetReservationById[]>([])
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ['userReservations'],
+    queryFn: async () => await getUserReservations(),
+  })
   const router = useRouter()
-
-  useEffect(() => {
-    setUserReservations()
-  }, [])
-
-  const setUserReservations = async () => {
-    const userReservations = await getUserReservations()
-    setReservations(userReservations.reservation.reverse())
-  }
 
   const logOut = () => {
     setUser(null)
@@ -41,10 +35,10 @@ const UserPage = () => {
                 <p className={styles.info}>Name - {user?.name}</p>
               </div>
             </div>
-            {reservations.length > 0 && (
+            {!isLoading && data && !isError && (
               <div className={styles.container}>
                 <p className={styles.title}>Reservations</p>
-                {reservations.map((item) => (
+                {data.map((item) => (
                   <div key={item.id} className={styles.reservationContainer}>
                     <p>Table Number - {item.tableId}</p>
                     <p>Book Hour - {item.bookHour}</p>

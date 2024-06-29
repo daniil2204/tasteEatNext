@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react'
 import styles from './AddDishModal.module.scss'
-import { useQuery } from '@tanstack/react-query'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { getDishById } from '@/app/api/dish'
 import Image from 'next/image'
@@ -10,18 +10,32 @@ import { useAppContext } from '@/context/user'
 import { addDishToBucket } from '@/app/api/bucket'
 import { toast } from 'react-toastify'
 import ChangeCountBtn from '@/components/elements/ChangeCountBtn/ChangeCountBtn'
+import { addDishToBucketType } from '@/types/bucket'
 
 const AddDishModal: React.FC = () => {
   const searchParams = useSearchParams()
   const dishId = searchParams.get('dishId')
   const router = useRouter()
   const { user } = useAppContext()
+  const [count, setCount] = useState(1)
+  const queryClient = useQueryClient()
 
   const { data, isError, isLoading } = useQuery({
     queryKey: [dishId],
     queryFn: async () => await getDishById(dishId ? +dishId : null),
   })
-  const [count, setCount] = useState(1)
+  const mutation = useMutation({
+    mutationFn: (addToBucket: addDishToBucketType) =>
+      addDishToBucket(addToBucket),
+    onSuccess: () => {
+      toast.success('Dish was added to bucket', { position: 'bottom-right' })
+      queryClient.invalidateQueries({ queryKey: ['userBucket'] })
+    },
+    onError: () => {
+      toast.error('Sorry, try it later', { position: 'bottom-right' })
+    },
+  })
+
   if (!dishId || isError) {
     router.push('/menu')
     return
@@ -38,16 +52,12 @@ const AddDishModal: React.FC = () => {
   }
 
   const addDish = async () => {
-    console.log('hello')
-    if (user) {
-      try {
-        await addDishToBucket({ count, dishId: +dishId })
-        toast.success('Dish was added to bucket', { position: 'bottom-right' })
-      } catch (err) {
-        toast.error('Sorry, try it later', { position: 'bottom-right' })
-      }
-    } else {
+    if (!user) {
       toast.error('Please login or register', { position: 'bottom-right' })
+      return
+    }
+    if (dishId) {
+      mutation.mutate({ count: count, dishId: +dishId })
     }
   }
 
