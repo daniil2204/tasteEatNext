@@ -1,13 +1,37 @@
-'use client'
 import React from 'react'
 import Link from 'next/link'
 
 const NotFound = () => {
   return (
-    <div>
-      <h2>Not Found</h2>
-      <p>Could not find requested resource</p>
-      <Link href="/">Return Home</Link>
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        height: 200,
+        margin: 25,
+      }}
+    >
+      <div style={{ textAlign: 'center' }}>
+        <h2 style={{ fontSize: '32px', fontWeight: 'bold' }}>
+          The page is not found
+        </h2>
+        <Link
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: 150,
+            height: 50,
+            fontSize: 24,
+            border: '1px solid gray',
+            margin: '25px auto',
+            borderRadius: 10,
+          }}
+          href="/"
+        >
+          Return Home
+        </Link>
+      </div>
     </div>
   )
 }

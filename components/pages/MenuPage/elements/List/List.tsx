@@ -12,7 +12,7 @@ const List = () => {
   const [offset, setOffset] = useState(0)
   const { data, isLoading, isError } = useQuery({
     queryKey: ['dishList'],
-    queryFn: async () => await getDishes({ offset }),
+    queryFn: async () => await getDishes({ offset: offset ? offset : 0 }),
   })
 
   const createDish = (dishes: DishInterface[]) => {

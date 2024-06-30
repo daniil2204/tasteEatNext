@@ -72,7 +72,7 @@ const Footer = () => {
         </div>
         <div>
           <input className={styles.emailInput} placeholder="Email" />
-          <button className={styles.emailBtn}>
+          <button className={styles.emailBtn} style={{ marginTop: 1 }}>
             <p
               style={{ color: '#000', fontWeight: 'bold' }}
               className={styles.addInfo__text}

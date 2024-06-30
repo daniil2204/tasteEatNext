@@ -55,15 +55,12 @@ const ReservationRow = ({
       setError('Sorry there was an error, try again later')
     },
   })
-  console.log(mutation)
 
   return (
     <div className={styles.reservation}>
       <div className={styles.reservation__info}>
         <p>Table № {id}</p>
-        <p onClick={() => console.log(hourCount)}>
-          Number of guests - {countOfGuests}
-        </p>
+        <p>Number of guests - {countOfGuests}</p>
       </div>
       <div className={styles.timeContainer}>
         {freeHours.map((item) => (

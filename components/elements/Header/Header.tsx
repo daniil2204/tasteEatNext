@@ -72,7 +72,7 @@ const Header = () => {
           height={188}
         />
         <button className={`${styles.btn} ${styles.btn__bucket}`}>
-          <Link href={'/bucket'} className={styles.btn__bucket}>
+          <Link href={'/'} className={styles.btn__bucket}>
             Bucket
           </Link>
           <Image

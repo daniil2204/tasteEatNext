@@ -29,8 +29,6 @@ export const makeReservation = async ({
   tableId,
   year,
 }: ICreateReservation): Promise<IGetReservationById | false> => {
-  console.log(day)
-  console.log(month)
   try {
     const token = localStorage.getItem('token')
     if (!token) {
@@ -52,29 +50,28 @@ export const makeReservation = async ({
     )
     return data
   } catch (err) {
-    return false
+    throw new Error('Not created')
   }
 }
 
 export const getReservationById = async (
   reservationId: number
-): Promise<IGetReservationById | false> => {
+): Promise<IGetReservationById> => {
   try {
     const token = localStorage.getItem('token')
     if (!token) {
-      return false
+      throw new Error('Not founded')
     }
     const { data } = await api.get(`/reservation/${reservationId}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
     return data
   } catch (err) {
-    return false
+    throw new Error('Not founded')
   }
 }
 
 export const getUserReservations = async (): Promise<IGetReservationById[]> => {
-  console.log('hello')
   const token = localStorage.getItem('token')
   if (!token) {
     throw new Error('Token is not valid')
