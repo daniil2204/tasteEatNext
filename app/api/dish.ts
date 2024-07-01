@@ -20,7 +20,7 @@ export async function getDishes({
         discount ? `&discount=true` : ''
       }${type ? `&type=${type}` : ''}`
     )
-    return data.reservation
+    return data
   } catch (err) {
     return []
   }
