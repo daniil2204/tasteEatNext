@@ -16,6 +16,10 @@ export const useRedirect = (page: string) => {
       setShouldLoadContent(true)
       return
     }
+    if (page === 'bucket' && user) {
+      setShouldLoadContent(true)
+      return
+    }
     if (page === 'auth' && !user) {
       setShouldLoadContent(true)
       return
