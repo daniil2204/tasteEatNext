@@ -37,3 +37,26 @@ export const getUserBucket = async (): Promise<IUserBucketItem[]> => {
     throw new Error('Try it later')
   }
 }
+
+export const changeDishCount = async ({
+  count,
+  dishId,
+}: addDishToBucketType) => {
+  const token = localStorage.getItem('token')
+  if (!token) {
+    throw new Error('user not found')
+  }
+  try {
+    const { data } = await api.post(
+      `/bucket/add`,
+      { count, dishId },
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    )
+    console.log(data)
+    return data
+  } catch (err) {
+    throw new Error('Try it later')
+  }
+}

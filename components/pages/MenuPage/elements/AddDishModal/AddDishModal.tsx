@@ -30,6 +30,7 @@ const AddDishModal: React.FC = () => {
     onSuccess: () => {
       toast.success('Dish was added to bucket', { position: 'bottom-right' })
       queryClient.invalidateQueries({ queryKey: ['userBucket'] })
+      router.push('/menu', { scroll: false })
     },
     onError: () => {
       toast.error('Sorry, try it later', { position: 'bottom-right' })

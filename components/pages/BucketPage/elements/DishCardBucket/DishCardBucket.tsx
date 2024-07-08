@@ -2,38 +2,67 @@
 import React, { useState } from 'react'
 import styles from './DishCardBucket.module.scss'
 import ChangeCountBtn from '@/components/elements/ChangeCountBtn/ChangeCountBtn'
-import { IUserBucketItem } from '@/types/bucket'
+import { addDishToBucketType, IUserBucketItem } from '@/types/bucket'
 import Image from 'next/image'
 import { getPrice } from '@/utils/getPrice'
+import { changeDishCount } from '@/app/api/bucket'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { toast } from 'react-toastify'
+import Spinner from '@/components/elements/Spinner/Spinner'
 
 const DishCardBucket = ({ bucketItem }: { bucketItem: IUserBucketItem }) => {
   const [count, setCount] = useState(bucketItem.count)
-  const changeCount = (operation: '+' | '-') => {
-    if (operation === '+') {
-      setCount((count) => count + 1)
-    } else {
-      if (count !== 1) {
-        setCount((count) => count - 1)
-      }
-    }
+  const queryClient = useQueryClient()
+  const { mutate, isPending } = useMutation({
+    mutationFn: (changeCount: addDishToBucketType) =>
+      changeDishCount({ count: changeCount.count, dishId: changeCount.dishId }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['userBucket'] })
+    },
+    onError: () => {
+      toast.error('Sorry, error happened')
+    },
+  })
+  const changeCount = async (operation: '+' | '-') => {
+    operation === '+'
+      ? setCount((count) => count + 1)
+      : setCount((count) => count - 1)
+    mutate({
+      count: operation === '+' ? count + 1 : count - 1,
+      dishId: bucketItem.dishId,
+    })
   }
   return (
     <div className={styles.dishContainer}>
-      <p>{bucketItem.title}</p>
-      <div className={styles.info}>
-        <div style={{ width: 100, height: 100, position: 'relative' }}>
-          <Image alt={bucketItem.title} src={bucketItem.image} fill />
-        </div>
-        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <ChangeCountBtn func={() => changeCount('+')} text="+" />
-          <p>{count}</p>
-          <ChangeCountBtn func={() => changeCount('-')} text="-" />
-        </div>
-        <p>
-          Price -{' '}
-          {Math.round(getPrice(bucketItem.price, bucketItem.discount) * count)}$
-        </p>
-      </div>
+      {!isPending ? (
+        <>
+          <p className={styles.title}>{bucketItem.title}</p>
+          <div className={styles.info}>
+            <div className={styles.imgContainer}>
+              <Image
+                style={{ borderRadius: 15 }}
+                alt={bucketItem.title}
+                src={bucketItem.image}
+                fill
+              />
+            </div>
+            <div className={styles.countContainer}>
+              <ChangeCountBtn func={() => changeCount('+')} text="+" />
+              <p className={styles.count}>{count}</p>
+              <ChangeCountBtn func={() => changeCount('-')} text="-" />
+            </div>
+            <p className={styles.price}>
+              Price -{' '}
+              {Math.round(
+                getPrice(bucketItem.price, bucketItem.discount) * count
+              )}
+              $
+            </p>
+          </div>
+        </>
+      ) : (
+        <Spinner />
+      )}
     </div>
   )
 }

@@ -68,11 +68,12 @@ const Header = () => {
           className={styles.logo}
           alt="restaurant logo"
           src="/assets/img/bannerLogo.svg"
+          priority
           width={378}
           height={188}
         />
         <button className={`${styles.btn} ${styles.btn__bucket}`}>
-          <Link href={'/'} className={styles.btn__bucket}>
+          <Link href={'/bucket'} className={styles.btn__bucket}>
             Bucket
           </Link>
           <Image
