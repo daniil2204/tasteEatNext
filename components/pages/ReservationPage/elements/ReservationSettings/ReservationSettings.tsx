@@ -2,12 +2,12 @@
 import React, { useState } from 'react'
 import { getMinAndMaxDate } from '@/utils/getMinAndMaxDate'
 import styles from './ReservationSettings.module.scss'
-import { reservationTypeDate } from '@/types/reservation'
+import { fetchTablesInfo, reservationTypeDate } from '@/types/reservation'
 
 const ReservationSettings = ({
   getTables,
 }: {
-  getTables: (dateObj: reservationTypeDate, count: number) => void
+  getTables: (fetchInfo: fetchTablesInfo) => void
 }) => {
   const { minValue, maxValue } = getMinAndMaxDate(14)
   const [date, setDate] = useState<string>('')
@@ -23,7 +23,7 @@ const ReservationSettings = ({
           month: +dateArr[1],
           day: +dateArr[2],
         }
-        getTables(dateObj, count)
+        getTables({ date: dateObj, count: count })
       } catch (err) {
         setErrorDate(true)
       }

@@ -3,47 +3,44 @@ import React, { useState } from 'react'
 import styles from './ReservationPage.module.scss'
 import ReservationTable from './elements/ReservationTable/ReservationTable'
 import ReservationSettings from './elements/ReservationSettings/ReservationSettings'
-import { reservationTypeDate, resevationsInfo } from '@/types/reservation'
+import { fetchTablesInfo } from '@/types/reservation'
 import { getReservations } from '@/app/api/reservation'
+import { useQuery } from '@tanstack/react-query'
 
 const ReservationPage = () => {
-  const [freeTables, setFreeTables] = useState<resevationsInfo[]>([])
-  const [reservationDate, setReservationDate] =
-    useState<reservationTypeDate | null>(null)
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string>('')
+  const [queryKey, setQueryKey] = useState(0)
+  const [fetchData, setFetchData] = useState<fetchTablesInfo>()
 
-  const getTables = async (date: reservationTypeDate, count: number) => {
-    setError('')
-    try {
-      setLoading(true)
-      const tables = await getReservations({
-        countOfGuests: count,
-        reservationDate: date,
-      })
-      if (tables.length === 0) {
-        setError(
-          'It seems that all tables with these parameters are already booked'
-        )
-      }
-      setFreeTables(tables)
-      setReservationDate(date)
-      setLoading(false)
-    } catch (err) {
-      setError('Sorry, try it later')
-    }
+  const getTables = ({ count, date }: fetchTablesInfo) => {
+    setFetchData({ count, date })
+    setQueryKey((prevKey) => prevKey + 1)
   }
+
+  const { data, isLoading, error } = useQuery({
+    queryKey: ['reservationList', queryKey],
+    queryFn: async () => {
+      if (fetchData) {
+        return await getReservations({
+          countOfGuests: fetchData.count,
+          reservationDate: fetchData.date,
+        })
+      }
+    },
+    enabled: !!fetchData,
+  })
 
   return (
     <section className={styles.reservationPage} about="reservation page">
       <div className={styles.formBg}>
         <ReservationSettings getTables={getTables} />
-        <ReservationTable
-          error={error}
-          loading={loading}
-          freeTables={freeTables}
-          date={reservationDate}
-        />
+        {data && fetchData && (
+          <ReservationTable
+            error={error}
+            loading={isLoading}
+            freeTables={data}
+            date={fetchData?.date}
+          />
+        )}
       </div>
     </section>
   )

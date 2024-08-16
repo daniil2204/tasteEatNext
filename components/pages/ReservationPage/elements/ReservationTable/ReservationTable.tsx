@@ -26,20 +26,20 @@ const ReservationTable = ({
                 />
               ))}
             </div>
-            {freeTables.length > 4 ? (
+            {/* {freeTables.length > 4 ? (
               <div className={styles.arrows}>
                 <button className={styles.arrow}>{`<`}</button>
                 <button className={styles.arrow}>{`>`}</button>
               </div>
-            ) : null}
+            ) : null} */}
           </div>
-        ) : !error ? (
-          <p className={styles.reservationWarning}>
-            Select the date and number of guests
+        ) : freeTables.length === 0 && !error ? (
+          <p style={{ color: 'green' }} className={styles.reservationWarning}>
+            Sorry, we do not have free tables
           </p>
-        ) : (
-          <p className={styles.reservationWarning}>{error}</p>
-        )
+        ) : error ? (
+          <p className={styles.reservationWarning}>{error.message}</p>
+        ) : null
       ) : (
         <Spinner />
       )}

@@ -24,7 +24,7 @@ export type reservationTypeDate = {
 export interface IReservatioTable {
   freeTables: resevationsInfo[]
   loading: boolean
-  error: string
+  error: Error | null
   date: reservationTypeDate | null
 }
 
@@ -46,4 +46,9 @@ export interface IGetReservationById {
   day: number
   month: number
   year: number
+}
+
+export type fetchTablesInfo = {
+  date: reservationTypeDate
+  count: number
 }
