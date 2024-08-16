@@ -25,9 +25,9 @@ const BucketPage = () => {
 
   return (
     <>
+      {isLoading && <Spinner />}
       {shouldLoadContent && (
         <div className={styles.bucketPage}>
-          {isLoading && <Spinner />}
           {data && data.length > 0 ? (
             <div className={styles.bucketContainer}>
               {data.map((item) => (

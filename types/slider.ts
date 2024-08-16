@@ -18,3 +18,9 @@ export type dishesAndCategory = {
   type: typeOfFoodTitle
   dishes: dishSliderInterface[]
 }
+
+export interface IArrow {
+  className?: string
+  style?: React.CSSProperties
+  onClick?: React.MouseEventHandler<HTMLDivElement>
+}

@@ -8,36 +8,35 @@ import Spinner from '@/components/elements/Spinner/Spinner'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import { useQuery } from '@tanstack/react-query'
+import { IArrow } from '@/types/slider'
 
 const MySlider = () => {
-  // const [data, setData] = useState<dishesAndCategory[]>([])
-  // const [loading, setLoading] = useState(false)
-  // const [error, setError] = useState(false)
-  // useEffect(() => {
-  //   onRequest()
-  // }, [])
-
-  // const onRequest = async () => {
-  //   setLoading(true)
-  //   const local = localStorage.getItem('dishesAndCategories')
-  //   if (local) {
-  //     setData(JSON.parse(local))
-  //     setLoading(false)
-  //   } else {
-  //     getDishesAndType()
-  //       .then((res) => {
-  //         setData([...res, ...data])
-  //         localStorage.setItem('dishesAndCategories', JSON.stringify(res))
-  //       })
-  //       .then(() => setLoading(false))
-  //       .catch(() => setError(true))
-  //   }
-  // }
-
   const { data, isLoading, isError } = useQuery({
     queryKey: ['dishSlider'],
     queryFn: async () => await getDishesAndType(),
   })
+
+  const Arrow = (props: IArrow) => {
+    const { className, style, onClick } = props
+    return (
+      <div
+        className={className}
+        style={{
+          ...style,
+          backgroundColor: 'gray',
+          width: 40,
+          height: 40,
+          borderRadius: 50,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginLeft: -30,
+          marginRight: -30,
+        }}
+        onClick={onClick}
+      />
+    )
+  }
 
   const settings = {
     infinite: true,
@@ -45,6 +44,9 @@ const MySlider = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     className: 'slides',
+    dots: true,
+    nextArrow: <Arrow />,
+    prevArrow: <Arrow />,
   }
 
   const createSlider = () => {
