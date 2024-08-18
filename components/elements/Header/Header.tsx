@@ -7,9 +7,11 @@ import Link from 'next/link'
 import { useAppContext } from '@/context/user'
 import { getMe } from '@/app/api/auth'
 import { toast } from 'react-toastify'
+import { useRouter } from 'next/navigation'
 
 const Header = () => {
   const { user, setUser } = useAppContext()
+  const router = useRouter()
   const getUser = async () => {
     const user = await getMe()
     if (user) {
@@ -77,6 +79,7 @@ const Header = () => {
             Bucket
           </Link>
           <Image
+            onClick={() => router.push('/bucket')}
             src={'/assets/img/cart.svg'}
             alt="shopCart"
             width={24}
