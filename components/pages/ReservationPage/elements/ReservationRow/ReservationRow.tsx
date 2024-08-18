@@ -14,6 +14,7 @@ import {
   useQueryClient,
 } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
+import { useAppContext } from '@/context/user'
 
 const ReservationRow = ({
   id,
@@ -25,8 +26,14 @@ const ReservationRow = ({
   const [hourCount, setHourCount] = useState<number>(1)
   const [error, setError] = useState('')
   const router = useRouter()
+  const { user } = useAppContext()
 
   const createReservation = async () => {
+    if (!user) {
+      toast.error('Please login or register', { position: 'bottom-right' })
+      router.push('/auth')
+      return
+    }
     if (date && selectedTime && hourCount) {
       const reservation: ICreateReservation = {
         bookHour: selectedTime,
