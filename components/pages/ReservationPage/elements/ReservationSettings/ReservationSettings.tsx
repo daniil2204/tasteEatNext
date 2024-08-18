@@ -14,7 +14,7 @@ const ReservationSettings = ({
   const [count, setCount] = useState<number>(1)
   const [errorDate, setErrorDate] = useState(false)
 
-  const getFreeTables = async () => {
+  const getFreeTables = () => {
     if (date) {
       try {
         const dateArr = date.split('-')

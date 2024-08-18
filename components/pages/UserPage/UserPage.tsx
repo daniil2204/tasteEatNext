@@ -6,6 +6,7 @@ import { useRedirect } from '@/hooks/useRedirect'
 import { useRouter } from 'next/navigation'
 import { getUserReservations } from '@/app/api/reservation'
 import { useQuery } from '@tanstack/react-query'
+import Link from 'next/link'
 
 const UserPage = () => {
   const { user, setUser } = useAppContext()
@@ -39,14 +40,18 @@ const UserPage = () => {
               <div className={styles.container}>
                 <p className={styles.title}>Reservations</p>
                 {data.map((item) => (
-                  <div key={item.id} className={styles.reservationContainer}>
+                  <Link
+                    href={`/reservation/${item.id}`}
+                    key={item.id}
+                    className={styles.reservationContainer}
+                  >
                     <p>Table Number - {item.tableId}</p>
                     <p>Book Hour - {item.bookHour}</p>
                     <p>Hour Count - {item.hourCount}</p>
                     <p>
                       Date - {item.day}/{item.month}/{item.year}
                     </p>
-                  </div>
+                  </Link>
                 ))}
               </div>
             )}

@@ -1,39 +1,47 @@
 'use client'
-import { getReservationById } from '@/app/api/reservation'
-import { IGetReservationById } from '@/types/reservation'
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { useRouter } from 'next/navigation'
+import { getReservationById } from '@/app/api/reservation'
 import styles from './ReservationUser.module.scss'
+import { useQuery } from '@tanstack/react-query'
+import Spinner from '@/components/elements/Spinner/Spinner'
+import { toast } from 'react-toastify'
 
 const ReservationUser = ({ id }: { id: string | string[] | undefined }) => {
-  const [reservation, setReservation] = useState<IGetReservationById>()
   const router = useRouter()
-  useEffect(() => {
-    if (id) {
-      getReservation(+id)
-    }
-  }, [id])
-  const getReservation = async (id: number) => {
-    const reservation = await getReservationById(id)
-    if (reservation) {
-      setReservation(reservation)
-    } else {
-      router.push('/')
-    }
+
+  const { data, isLoading, isError } = useQuery({
+    queryKey: [`reservationBy${id}`],
+    queryFn: async () => {
+      if (id) {
+        return await getReservationById(+id)
+      } else {
+        router.push('/')
+      }
+    },
+  })
+  if (isError) {
+    router.push('/')
+    toast.error('Sorry, was a mistake', { position: 'bottom-right' })
   }
   return (
-    <div className={styles.reservationPage}>
-      <div>
-        <p>Reservation id - {reservation?.id}</p>
-        <p>Reservation tableId - {reservation?.tableId}</p>
-        <p>Reservation userId - {reservation?.userId}</p>
-        <p>Reservation day - {reservation?.day}</p>
-        <p>Reservation month - {reservation?.month}</p>
-        <p>Reservation year - {reservation?.year}</p>
-        <p>Reservation bookHour - {reservation?.bookHour}</p>
-        <p>Reservation hourCount - {reservation?.hourCount}</p>
-      </div>
-    </div>
+    <>
+      {isLoading && <Spinner />}
+      {data && (
+        <div className={styles.reservationPage}>
+          <div>
+            <p>Reservation id - {data?.id}</p>
+            <p>Reservation tableId - {data?.tableId}</p>
+            <p>Reservation userId - {data?.userId}</p>
+            <p>Reservation day - {data?.day}</p>
+            <p>Reservation month - {data?.month}</p>
+            <p>Reservation year - {data?.year}</p>
+            <p>Reservation bookHour - {data?.bookHour}</p>
+            <p>Reservation hourCount - {data?.hourCount}</p>
+          </div>
+        </div>
+      )}
+    </>
   )
 }
 

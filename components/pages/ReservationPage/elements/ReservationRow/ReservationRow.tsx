@@ -13,6 +13,7 @@ import {
   useMutation,
   useQueryClient,
 } from '@tanstack/react-query'
+import { useRouter } from 'next/navigation'
 
 const ReservationRow = ({
   id,
@@ -23,6 +24,7 @@ const ReservationRow = ({
   const [selectedTime, setSelectedTime] = useState<number>()
   const [hourCount, setHourCount] = useState<number>(1)
   const [error, setError] = useState('')
+  const router = useRouter()
 
   const createReservation = async () => {
     if (date && selectedTime && hourCount) {
@@ -47,9 +49,10 @@ const ReservationRow = ({
   > = useMutation({
     mutationFn: async (reservation: ICreateReservation) =>
       await makeReservation(reservation),
-    onSuccess: () => {
+    onSuccess: ({ id }) => {
       queryClient.invalidateQueries({ queryKey: ['userReservations'] })
       toast.success('Reservation was success', { position: 'bottom-right' })
+      router.push(`/reservation/${id}`)
     },
     onError: () => {
       setError('Sorry there was an error, try again later')

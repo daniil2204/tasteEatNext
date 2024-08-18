@@ -28,11 +28,11 @@ export const makeReservation = async ({
   month,
   tableId,
   year,
-}: ICreateReservation): Promise<IGetReservationById | false> => {
+}: ICreateReservation): Promise<IGetReservationById> => {
   try {
     const token = localStorage.getItem('token')
     if (!token) {
-      return false
+      throw new Error('Token not found')
     }
     const { data } = await api.post(
       `/reservation/create`,

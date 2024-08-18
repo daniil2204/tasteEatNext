@@ -54,7 +54,6 @@ export const changeDishCount = async ({
         headers: { Authorization: `Bearer ${token}` },
       }
     )
-    console.log(data)
     return data
   } catch (err) {
     throw new Error('Try it later')

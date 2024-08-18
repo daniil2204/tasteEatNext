@@ -12,7 +12,8 @@ const List = () => {
   const [offset, setOffset] = useState(0)
   const { data, isLoading, isError } = useQuery({
     queryKey: ['dishList'],
-    queryFn: async () => await getDishes({ offset: offset ? offset : 0 }),
+    queryFn: async () =>
+      await getDishes({ offset: offset ? offset : 0, likes: true }),
   })
 
   const createDish = (dishes: DishInterface[]) => {

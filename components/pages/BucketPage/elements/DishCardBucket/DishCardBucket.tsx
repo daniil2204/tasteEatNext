@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import styles from './DishCardBucket.module.scss'
 import ChangeCountBtn from '@/components/elements/ChangeCountBtn/ChangeCountBtn'
 import { addDishToBucketType, IUserBucketItem } from '@/types/bucket'
@@ -20,17 +20,26 @@ const DishCardBucket = ({ bucketItem }: { bucketItem: IUserBucketItem }) => {
       queryClient.invalidateQueries({ queryKey: ['userBucket'] })
     },
     onError: () => {
-      toast.error('Sorry, error happened')
+      toast.error('Sorry, error happened', { position: 'bottom-right' })
     },
   })
-  const changeCount = async (operation: '+' | '-') => {
-    operation === '+'
-      ? setCount((count) => count + 1)
-      : setCount((count) => count - 1)
-    mutate({
-      count: operation === '+' ? count + 1 : count - 1,
-      dishId: bucketItem.dishId,
-    })
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
+
+  const changeCount = (operation: '+' | '-') => {
+    if (count === 0) {
+      return
+    }
+    const newCount = operation === '+' ? count + 1 : count - 1
+    setCount(newCount)
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current)
+    }
+    timeoutRef.current = setTimeout(() => {
+      mutate({
+        count: newCount,
+        dishId: bucketItem.dishId,
+      })
+    }, 1000)
   }
   return (
     <div className={styles.dishContainer}>
