@@ -25,7 +25,9 @@ const SideBar = ({ isOpen, setIsOpen }: sideBarInterface) => {
         <p className={styles.underline} />
         {navList.map((nav) => (
           <p key={nav.title} className={`${styles.link} ${styles.text}`}>
-            <Link href={nav.href}>{nav.title}</Link>
+            <Link href={nav.href} onClick={() => setIsOpen(false)}>
+              {nav.title}
+            </Link>
           </p>
         ))}
       </div>
